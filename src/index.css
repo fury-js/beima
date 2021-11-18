@@ -13,14 +13,13 @@ body {
 }
 
 :root {
-  --app-secondary-purple: #7611F7;
-  --app-grey: #A0A2A4;
-  --app-blue-fade: #ebf3ff;
+  --app-purple: #7611f7;
+  --app-grey: #9c9c9c;
+  --app-blue: #2952e3;
+  --app-red: #f84550;
   --app-blue-light: #f8fafc;
   --app-grey: #717171;
   --app-primary-text: poppins;
-  --app-primary-green: #00d6a3;
-  --app-green-fade: #87e5d8;
   --app-border-radius-sm: 10px;
   --app-border-radius-md: 15px;
   --app-border-radius-lg: 30px;

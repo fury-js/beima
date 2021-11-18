@@ -1,6 +1,6 @@
 import { ReactComponent as CircleLoader } from "./circle-loader.svg";
+import { ReactComponent as BeimaLogo } from "./logo.svg";
 
-import BeimaLogo from "./logo.svg";
 import YellowCrosses from "./yellow-cross.svg";
 import airbnbLogo from "./airbnb.svg";
 import hubspotLogo from "./hubspot.svg";

@@ -1,4 +1,9 @@
 .container {
   position: sticky;
   top: 0;
+  z-index: var(--header-z-index);
+}
+
+.logo  {
+  height: 40px;
 }
