@@ -6,6 +6,11 @@ import airbnbLogo from "./airbnb.svg";
 import hubspotLogo from "./hubspot.svg";
 import googleLogo from "./google.svg";
 import microsoftLogo from "./microsoft.svg";
+import chainSvg from "./chain.svg";
+import houseSvg from "./house.svg";
+import personSvg from "./person.svg";
+import securitySvg from "./security.svg";
+import apySvg from "./apy.svg";
 
 export {
   BeimaLogo,
@@ -15,4 +20,9 @@ export {
   hubspotLogo,
   googleLogo,
   microsoftLogo,
+  chainSvg,
+  houseSvg,
+  personSvg,
+  securitySvg,
+  apySvg,
 };

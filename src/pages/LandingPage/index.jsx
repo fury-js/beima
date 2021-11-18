@@ -3,10 +3,15 @@ import { mapImage, peopleImage } from "../../assets/images";
 
 import {
   airbnbLogo,
+  apySvg,
+  chainSvg,
   CircleLoader,
   googleLogo,
+  houseSvg,
   hubspotLogo,
   microsoftLogo,
+  personSvg,
+  securitySvg,
   YellowCrosses,
 } from "../../assets/svg";
 
@@ -141,7 +146,9 @@ function LandingPage(props) {
                 </p>
               </div>
             </div>
-            <div className={`flex order-2 md:order-1 col-1 p-6 ${styles["cards"]}`}>
+            <div
+              className={`flex order-2 md:order-1 col-1 p-6 ${styles["cards"]}`}
+            >
               <div className="grid grid-cols-7 ">
                 <div className={`${styles["start-numbers"]}`}>
                   <span>2</span>
@@ -155,7 +162,9 @@ function LandingPage(props) {
                 </div>
               </div>
             </div>
-            <div className={`flex order-1 md:order-2 col-1 p-6 ${styles["cards"]}`}>
+            <div
+              className={`flex order-1 md:order-2 col-1 p-6 ${styles["cards"]}`}
+            >
               <div className="grid grid-cols-7 ">
                 <div className={`${styles["start-numbers"]}`}>
                   <span>1</span>
@@ -170,7 +179,9 @@ function LandingPage(props) {
                 </div>
               </div>
             </div>
-            <div className={`flex order-3 md:order-3 col-1 p-6 ${styles["cards"]}`}>
+            <div
+              className={`flex order-3 md:order-3 col-1 p-6 ${styles["cards"]}`}
+            >
               <div className="grid grid-cols-7 ">
                 <div className={`${styles["start-numbers"]}`}>
                   <span>3</span>
@@ -180,6 +191,148 @@ function LandingPage(props) {
                   <p className={`${styles["card-details"]}`}>
                     Fund your wallet to activate your retirement.
                   </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className={`${styles.section_4} `}>
+        <div className="container lg:pt-10 pb-16">
+          <div
+            className={`${styles["header-text"]} text-center text-white pb-16`}
+          >
+            Our Features
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 grid-rows-2 gap-7 ">
+            <div
+              className={`${styles["cards"]} w-full py-10 col-span-1 lg:col-span-2 text-center`}
+            >
+              <p className={`${styles["card-title"]} mb-4`}>
+                Automated Savings
+              </p>
+              <p className={`${styles["card-details"]}`}>
+                Simply fund your wallet and let the platform do the rest.
+              </p>
+            </div>
+            <div
+              className={`${styles["cards"]} w-full py-10 col-span-1 lg:col-span-2 text-center`}
+            >
+              <p className={`${styles["card-title"]} mb-4`}>High interests</p>
+              <p className={`${styles["card-details"]}`}>
+                You can earn up to 15% APY. Traditional interest rates offer 1 –
+                2% APY.
+              </p>
+            </div>
+            <div
+              className={`${styles["cards"]} w-full py-10 col-span-1 lg:col-span-2 text-center`}
+            >
+              <p className={`${styles["card-title"]} mb-4`}>Security</p>
+              <p className={`${styles["card-details"]}`}>
+                Your funds are secured using the XEND Finance Layer-2 DEFI
+                Protocol.
+              </p>
+            </div>
+            <div
+              className={`${styles["cards"]} w-full py-10 col-span-1 lg:col-span-2 text-center lg:col-start-2`}
+            >
+              <p className={`${styles["card-title"]} mb-4`}>
+                Decentralized and Transparent
+              </p>
+              <p className={`${styles["card-details"]}`}>
+                Funds are tamper-proof from third parties and all transactions
+                are easily assessable.
+              </p>
+            </div>
+            <div
+              className={`${styles["cards"]} w-full py-10 col-span-1 lg:col-span-2 text-center`}
+            >
+              <p className={`${styles["card-title"]} mb-4`}>
+                Approved Withdrawals
+              </p>
+              <p className={`${styles["card-details"]}`}>
+                Approve a next of kin for withdrawal of your funds, in the event
+                of an emergency.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className={`${styles.section_5} `}>
+        <div className="container lg:pt-10 pb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center">
+            <div className="col-span-1">
+              <div
+                className={`${styles["header-text"]} pb-8 md:pb-12 text-white`}
+              >
+                Fantastic Benefits
+              </div>
+            </div>
+            <div className="col-span-1 text-gray-450 pb-8 md:pb-12 ">
+              Get hold of our pension plans and enjoy the numerous benefits in
+              all maximum.
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-7 ">
+            <div
+              className={`${styles["cards"]} w-full py-10 col-span-full md:col-span-1`}
+            >
+              <div className="items-center grid grid-cols-9 gap-4">
+                <div className="col-span-2">
+                  <img src={apySvg} alt="" />
+                </div>
+                <div className="col-span-7 text-gray-450">
+                  Earn up to 15% APY using XEND Finance Layer-2 Defi Protocol.
+                </div>
+              </div>
+            </div>
+            <div
+              className={`${styles["cards"]} w-full py-10 col-span-full md:col-span-1`}
+            >
+              <div className="items-center grid grid-cols-9 gap-4">
+                <div className="col-span-2">
+                  <img src={securitySvg} alt="" />
+                </div>
+                <div className="col-span-7 text-gray-450">
+                  Improved security and privacy using the power of the
+                  blockchain.
+                </div>
+              </div>
+            </div>
+            <div
+              className={`${styles["cards"]} w-full py-10 col-span-full md:col-span-1`}
+            >
+              <div className="items-center grid grid-cols-9 gap-4">
+                <div className="col-span-2">
+                  <img src={personSvg} alt="" />
+                </div>
+                <div className="col-span-7 text-gray-450">
+                  A decentralised structure with no third party interference.
+                </div>
+              </div>
+            </div>
+            <div
+              className={`${styles["cards"]} w-full py-10 col-span-full md:col-span-1`}
+            >
+              <div className="items-center grid grid-cols-9 gap-4">
+                <div className="col-span-2">
+                  <img src={chainSvg} alt="" />
+                </div>
+                <div className="col-span-7 text-gray-450">
+                  Lower gas fees by leveraging the Binance Smart Chain network.
+                </div>
+              </div>
+            </div>
+            <div
+              className={`${styles["cards"]} w-full py-10 col-span-full md:col-span-1`}
+            >
+              <div className="items-center grid grid-cols-9 gap-4">
+                <div className="col-span-2">
+                  <img src={houseSvg} alt="" />
+                </div>
+                <div className="col-span-7 text-gray-450">
+                  Earn Xend tokens as interest, which can be withdrawn as stable
+                  coins.
                 </div>
               </div>
             </div>

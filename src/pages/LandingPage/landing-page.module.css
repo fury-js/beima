@@ -75,7 +75,7 @@
 
 @media screen and (min-width: 1280px) {
   .people_image_div {
-    top: -60px;
+    top: -35px;
   }
 }
 
@@ -234,3 +234,73 @@
   position: relative;
   /* top: -40px */
 }
+
+.container .section_4 .cards {
+  color: #fff;
+  padding: 60px;
+  background: linear-gradient(
+    90.45deg,
+    rgba(31, 31, 31, 0.28) 0.45%,
+    #131313 99.67%
+  );
+  border: 0.5px solid #423a3a;
+  border-radius: 20px;
+}
+
+.container .section_4 .cards .card-title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.container .section_4 .cards .card-details {
+  color: var(--app-grey);
+  font-size: 14px;
+  line-height: 1.7rem;
+}
+
+.container .section_5 .cards {
+  color: #fff;
+  padding: 30px;
+  background: linear-gradient(
+    90.45deg,
+    rgba(31, 31, 31, 0.28) 0.45%,
+    #131313 99.67%
+  );
+  border: 0.5px solid #423a3a;
+  border-radius: 20px;
+}
+.cards {
+  position: relative;
+  overflow: hidden;
+  transition: 0.6s;
+}
+.cards::before {
+  content: "";
+  display: block;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  width: 60px;
+  height: 100%;
+  top: 0;
+  filter: blur(30px);
+  transform: translateX(-250px) skewX(-15deg);
+}
+.cards::after {
+  content: "";
+  display: block;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.2);
+  width: 30px;
+  height: 100%;
+  top: 0;
+  filter: blur(5px);
+  transform: translateX(-250px) skewX(-15deg);
+}
+
+.cards:hover::before,
+.cards:hover::after {
+  transform: translateX(700px) skewX(-15deg);
+  transition: 1s;
+}
+
