@@ -129,7 +129,7 @@ function LandingPage(props) {
       </section>
       <section className={`${styles.section_3} `}>
         <div className="container overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-10 py-10 md:py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-8 md:gap-10 py-10 md:py-16">
             <div className={`col-1 ${styles["title-container"]}`}>
               <div className={`${styles["header-text"]} text-white mb-10`}>
                 Getting Started
@@ -141,12 +141,12 @@ function LandingPage(props) {
                 </p>
               </div>
             </div>
-            <div className={`order-2 md:order-1 col-1 p-6 ${styles["cards"]}`}>
-              <div className="flex gap-7 ">
-                <div className={`${styles["start-numbers"]} mr-5 md:mr-0`}>
+            <div className={`flex order-2 md:order-1 col-1 p-6 ${styles["cards"]}`}>
+              <div className="grid grid-cols-7 ">
+                <div className={`${styles["start-numbers"]}`}>
                   <span>2</span>
                 </div>
-                <div className="flex flex-col justify-center">
+                <div className="ml-4 md:mr-0 col-span-6 col-start-2 col-end-7 flex flex-col justify-center">
                   <p className="mb-5">Select a retirement plan</p>
                   <p className={`${styles["card-details"]}`}>
                     Select a percentage, funding interval and a lock-up period
@@ -155,12 +155,12 @@ function LandingPage(props) {
                 </div>
               </div>
             </div>
-            <div className={`order-1 md:order-2 col-1 p-6 ${styles["cards"]}`}>
-              <div className="flex gap-7 ">
-                <div className={`${styles["start-numbers"]} mr-5 md:mr-0`}>
+            <div className={`flex order-1 md:order-2 col-1 p-6 ${styles["cards"]}`}>
+              <div className="grid grid-cols-7 ">
+                <div className={`${styles["start-numbers"]}`}>
                   <span>1</span>
                 </div>
-                <div className="flex flex-col justify-center">
+                <div className="ml-4 md:mr-0 col-span-6 col-start-2 col-end-7 flex flex-col justify-center">
                   <p className="mb-5">Register on the platform</p>
                   <p className={`${styles["card-details"]}`}>
                     Create an employee account with your name, email address,
@@ -170,12 +170,12 @@ function LandingPage(props) {
                 </div>
               </div>
             </div>
-            <div className={`order-3 md:order-3 col-1 p-6 ${styles["cards"]}`}>
-              <div className="flex gap-7 ">
-                <div className={`${styles["start-numbers"]} mr-5 md:mr-0`}>
+            <div className={`flex order-3 md:order-3 col-1 p-6 ${styles["cards"]}`}>
+              <div className="grid grid-cols-7 ">
+                <div className={`${styles["start-numbers"]}`}>
                   <span>3</span>
                 </div>
-                <div className="flex flex-col justify-center">
+                <div className="ml-4 md:mr-0 col-span-6 col-start-2 col-end-7 flex flex-col justify-center">
                   <p className="mb-5">Activate your plan</p>
                   <p className={`${styles["card-details"]}`}>
                     Fund your wallet to activate your retirement.

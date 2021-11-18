@@ -151,7 +151,7 @@
 }
 
 .start-numbers {
-  position: relative;
+  position: absolute;
   font-size: 60px;
   z-index: 1;
 }
@@ -177,10 +177,13 @@
   z-index: -1;
 }
 
+.cards:nth-child(3) span::before {
+  left: -13px;
+}
+
 @media screen and (min-width: 768px) {
   .start-numbers span::before {
     bottom: 15px;
-    left: -6px;
     height: 67px;
     width: 67px;
   }
@@ -195,8 +198,7 @@
 }
 
 .cards:nth-child(3) span {
-  margin-right: 8px;
-  padding-left: 8px;
+  margin: auto;
 }
 
 .cards:nth-child(4) span::before {
