@@ -1,10 +1,5 @@
 .container {
-  background-image: radial-gradient(
-      127.72% 166.96% at 95.03% 7.47%,
-      rgba(1, 192, 231, 0.07) 0%,
-      rgba(154, 4, 233, 0.07) 100%
-    ),
-    linear-gradient(95.3deg, #1c1e22 11.08%, #090909 97.41%);
+  overflow-x: hidden;
 }
 
 .container .section_1 {
@@ -68,12 +63,14 @@
 }
 
 .people_image_div {
+  display: flex;
+  align-items: flex-end;
   position: relative;
 }
 
 @media screen and (min-width: 1280px) {
   .people_image_div {
-    top: -35px;
+    top: -10px;
   }
 }
 
@@ -81,17 +78,20 @@
   position: relative;
   max-height: 680px;
   object-fit: cover;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media screen and (min-width: 1280px) {
   .people_image_div img {
-    right: -80px;
+    right: -50px;
   }
 }
 
 .pension_earnings {
   position: absolute;
+  left: -20px;
+  /* bottom: 10px; */
   padding: 30px 20px;
   background: rgba(94, 85, 85, 0.71);
   backdrop-filter: blur(12px);
@@ -369,5 +369,5 @@
 }
 
 .container footer span {
-  color: #A8A8A8 !important;
+  color: #a8a8a8 !important;
 }

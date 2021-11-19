@@ -2,12 +2,7 @@
   position: sticky;
   top: 0;
   z-index: var(--header-z-index);
-  backdrop-filter: blur(12px);
-  background-image: radial-gradient(
-    127.72% 166.96% at 95.03% 7.47%,
-    rgba(1, 192, 231, 0.07) 0%,
-    rgba(154, 4, 233, 0.07) 100%
-  );
+  backdrop-filter: blur(10px);
 }
 
 .logo {

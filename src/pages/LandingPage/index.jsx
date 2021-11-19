@@ -24,13 +24,12 @@ function LandingPage(props) {
   const currentYear = new Date().getFullYear();
   return (
     <main className={`${styles.container}`}>
-      <Header />
       <section
         className={`${styles.section_1} flex flex-col items-center justify-center`}
       >
         <div className="container">
           <div className="grid grid-cols-12">
-            <div className="col-span-12 lg:col-span-6 xl:col-span-5 lg:mb-16">
+            <div className="col-span-12 lg:col-span-6 2xl:col-span-5 lg:mb-16  mt-5 pt-12">
               <div className={`${styles.banner_text} text-white mb-10`}>
                 <span>A retirement </span>
                 <div className={`${styles.solution_text} inline-block mr-5`}>
@@ -50,22 +49,23 @@ function LandingPage(props) {
               </div>
             </div>
             <div
-              className={`mt-16 pt-3 lg:mt-0 col-span-12 lg:col-span-6 xl:col-span-7 ${styles.people_image_div}`}
+              className={`mt-16 pt-3 lg:mt-0 col-span-12 lg:col-span-6 2xl:col-span-7 ${styles.people_image_div}`}
             >
               <img src={peopleImage} alt="" />
+              <div
+                className={`${styles.pension_earnings} hidden xl:inline-flex flex-col items-center justify-center`}
+              >
+                <div className="flex items-center justify-center">
+                  <CircleLoader />
+                  <span className="absolute text-sm">100%</span>
+                </div>
+                <p className="mt-6">Pension Earnings</p>
+              </div>
             </div>
           </div>
         </div>
-        <div
-          className={`${styles.pension_earnings} hidden xl:inline-flex flex-col items-center justify-center`}
-        >
-          <div className="flex items-center justify-center">
-            <CircleLoader />
-            <span className="absolute text-sm">100%</span>
-          </div>
-          <p className="mt-6">Pension Earnings</p>
-        </div>
-        <div className="container">
+
+        <div className="container hidden">
           <div className={`my-6 xl:mt-0 xl:mb-12 ${styles.logos}`}>
             <div className="grid grid-cols-4 gap-x-6 lg:gap-x-10 place-items-center place-content-between">
               <div className="m x-16 col-span-1">
@@ -89,40 +89,33 @@ function LandingPage(props) {
           <div className="lg:mt-10 grid grid-cols-12 py-10 md:py-16">
             <div className="col-span-12 lg:col-span-5 xl:col-span-4 mb-16">
               <div className={`${styles["header-text"]} text-white mb-10`}>
-                Our users are all over the world with wide coverage.
+                Take a look at some of our metrics.
               </div>
               <div className="mb-10">
                 <p className="text-gray-450 text-base md:text-lg">
-                  Our platform reaches people all over the world, hereby we are
-                  trusted as the best platform for pension and retirement plan.
+                  Here's what we have been able to achieve over the short period that we have been active.
+                  We are becoming the go to platform for pension and retirement plans.
                 </p>
               </div>
-              <div className="grid grid-cols-3 gap-x-8">
+              <div className="flex justify-between">
                 <div>
-                  <div className="flex mb-2 items-baseline">
-                    <span className={`${styles["big-number"]} mr-2`}>20</span>
-                    <span className="text-gray-450 text-xs">Users</span>
+                  <div className="flex mb-2 items-baseline justify-start">
+                    <span className={`${styles["big-number"]}`}>20</span>
                   </div>
-                  <span className="text-xs md:text-sm text-gray-450">
-                    Outside Africa
-                  </span>
+                  <span className="text-base text-gray-450">Users</span>
                 </div>
                 <div>
-                  <div className="flex mb-2 items-baseline">
-                    <span className={`${styles["big-number"]} mr-2`}>20</span>
-                    <span className="text-gray-450 text-xs">Users</span>
+                  <div className="flex mb-2 items-baseline justify-start">
+                    <span className={`${styles["big-number"]}`}>$2.5K</span>
                   </div>
-                  <span className="text-xs md:text-sm text-gray-450">
-                    Around Africa
-                  </span>
+                  <span className="text-base text-gray-450">TVL</span>
                 </div>
                 <div>
-                  <div className="flex mb-2 items-baseline">
-                    <span className={`${styles["big-number"]} mr-2`}>150</span>
-                    <span className="text-gray-450 text-xs">Users</span>
+                  <div className="flex mb-2 items-baseline justify-start">
+                    <span className={`${styles["big-number"]}`}>$300</span>
                   </div>
-                  <span className="text-xs md:text-sm text-gray-450">
-                    Within Nigeria
+                  <span className="text-base text-gray-450">
+                    Interest Accrued
                   </span>
                 </div>
               </div>
