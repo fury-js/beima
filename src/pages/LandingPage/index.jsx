@@ -7,7 +7,6 @@ import {
   chainSvg,
   CircleLoader,
   DottedLineSvg,
-  dottedLineSvg,
   googleLogo,
   houseSvg,
   hubspotLogo,
