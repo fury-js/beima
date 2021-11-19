@@ -37,7 +37,6 @@
 
 .container .header-text {
   font-size: 1.8rem;
-  font-weight: 500;
   line-height: 2.5rem;
 }
 
@@ -50,7 +49,6 @@
 @media screen and (min-width: 1280px) {
   .container .header-text {
     font-size: 2.5rem;
-    font-weight: 500;
     line-height: 3rem;
   }
 }
@@ -177,7 +175,7 @@
   z-index: -1;
 }
 
-.cards:nth-child(3) span::before {
+.section_3 .cards:nth-child(3) span::before {
   left: -13px;
 }
 
@@ -189,19 +187,19 @@
   }
 }
 
-.cards:nth-child(2) span::before {
+.section_3 .cards:nth-child(2) span::before {
   background-color: var(--app-purple);
 }
 
-.cards:nth-child(3) span::before {
+.section_3 .cards:nth-child(3) span::before {
   background-color: var(--app-red);
 }
 
-.cards:nth-child(3) span {
+.section_3 .cards:nth-child(3) span {
   margin: auto;
 }
 
-.cards:nth-child(4) span::before {
+.section_3 .cards:nth-child(4) span::before {
   background-color: var(--app-blue);
 }
 
@@ -270,6 +268,68 @@
   border: 0.5px solid #423a3a;
   border-radius: 20px;
 }
+
+.section_6 .cards {
+  position: relative;
+  color: #fff;
+  padding: 20px;
+  background: linear-gradient(
+    90.45deg,
+    rgba(31, 31, 31, 0.28) 0.45%,
+    #131313 99.67%
+  );
+  border: 0.5px solid #423a3a;
+  border-radius: 20px;
+}
+
+.section_6 .cards .card-title {
+  position: relative;
+  font-size: 28px;
+  color: #fff;
+}
+
+.section_6 .cards .card-title::after {
+  content: "";
+  border-radius: 50%;
+  position: absolute;
+  margin-top: 10px;
+  margin-right: 10px;
+  right: 0px;
+  height: 25px;
+  width: 25px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 0 8px rgb(75 77 79 / 25%);
+  box-shadow: 0 0 0 8px rgb(75 77 79 / 25%);
+}
+
+.section_6 div:first-child > .cards:first-child .card-title::after {
+  background-color: var(--app-yellow);
+  -webkit-box-shadow: 0 0 0 8px rgb(72 61 33 / 25%);
+  box-shadow: 0 0 0 8px rgb(72 61 33 / 25%);
+}
+
+.section_6 .cards .card-details {
+  font-size: 14px;
+}
+
+.section_6 svg {
+  width: 90px;
+  transform: rotate(90deg);
+}
+
+@media screen and (min-width: 768px) {
+  .section_6 svg {
+    transform: rotate(0deg);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .section_6 svg {
+    width: 120px;
+    transform: rotate(0deg);
+  }
+}
+
 .cards {
   position: relative;
   overflow: hidden;
@@ -306,4 +366,8 @@
 
 .container section {
   min-height: 90vh;
+}
+
+.container footer span {
+  color: #A8A8A8 !important;
 }

@@ -1,5 +1,6 @@
 import { ReactComponent as CircleLoader } from "./circle-loader.svg";
 import { ReactComponent as BeimaLogo } from "./logo.svg";
+import { ReactComponent as DottedLineSvg } from "./dotted-line.svg";
 
 import YellowCrosses from "./yellow-cross.svg";
 import airbnbLogo from "./airbnb.svg";
@@ -11,6 +12,7 @@ import houseSvg from "./house.svg";
 import personSvg from "./person.svg";
 import securitySvg from "./security.svg";
 import apySvg from "./apy.svg";
+import trophySvg from "./trophy.svg";
 
 export {
   BeimaLogo,
@@ -25,4 +27,6 @@ export {
   personSvg,
   securitySvg,
   apySvg,
+  trophySvg,
+  DottedLineSvg,
 };

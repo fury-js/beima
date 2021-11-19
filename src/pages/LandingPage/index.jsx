@@ -6,12 +6,15 @@ import {
   apySvg,
   chainSvg,
   CircleLoader,
+  DottedLineSvg,
+  dottedLineSvg,
   googleLogo,
   houseSvg,
   hubspotLogo,
   microsoftLogo,
   personSvg,
   securitySvg,
+  trophySvg,
   YellowCrosses,
 } from "../../assets/svg";
 
@@ -19,8 +22,9 @@ import { Button, Header } from "../../components";
 import styles from "./landing-page.module.css";
 
 function LandingPage(props) {
+  const currentYear = new Date().getFullYear();
   return (
-    <div className={`${styles.container}`}>
+    <main className={`${styles.container}`}>
       <Header />
       <section
         className={`${styles.section_1} flex flex-col items-center justify-center`}
@@ -339,7 +343,147 @@ function LandingPage(props) {
           </div>
         </div>
       </section>
-    </div>
+      <section className={`${styles.section_6} `}>
+        <div className="container lg:pt-10 pb-16">
+          <div
+            className={`${styles["header-text"]} text-center text-white mb-4 pb-7 md:pb-16`}
+          >
+            Roadmap
+          </div>
+          <div className="grid grid-cols-1 gap-y-16">
+            <div className="grid grid-cols-1 md:grid-cols-9 gap-x-5 gap-y-16">
+              <div
+                className={`${styles["cards"]} w-full py-10 col-span-full md:col-span-4`}
+              >
+                <p className={`${styles["card-title"]} mb-5 pl-8`}>Q4, 2021</p>
+                <ul className={`${styles["card-details"]}`}>
+                  <li className="flex mb-3">
+                    <span className="mr-3">
+                      <img src={trophySvg} alt="" />
+                    </span>
+                    <span className="text-gray-450">Launch MVP.</span>
+                  </li>
+                  <li className="flex mb-3">
+                    <span className="mr-3">
+                      <img src={trophySvg} alt="" />
+                    </span>
+                    <span className="text-gray-450">
+                      Get financial support to fund further development.
+                    </span>
+                  </li>
+                  <li className="flex mb-3">
+                    <span className="mr-3">
+                      <img src={trophySvg} alt="" />
+                    </span>
+                    <span className="text-gray-450">
+                      Marketing of the MVP and community development.
+                    </span>
+                  </li>
+                  <li className="flex mb-3">
+                    <span className="mr-3">
+                      <img src={trophySvg} alt="" />
+                    </span>
+                    <span className="text-gray-450">
+                      Participate in the XEND hackathon.
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div className="place-self-center">
+                <DottedLineSvg />
+              </div>
+              <div
+                className={`${styles["cards"]} w-full py-10 col-span-full md:col-span-4 lg:col-start-6`}
+              >
+                <p className={`${styles["card-title"]} mb-5 pl-8`}>Q1, 2022</p>
+                <ul className={`${styles["card-details"]}`}>
+                  <li className="flex mb-3">
+                    <span className="mr-3">
+                      <img src={trophySvg} alt="" />
+                    </span>
+                    <span className="text-gray-450">
+                      Partnerships with companies to register their employees on
+                      our pensions systems.
+                    </span>
+                  </li>
+                  <li className="flex mb-3">
+                    <span className="mr-3">
+                      <img src={trophySvg} alt="" />
+                    </span>
+                    <span className="text-gray-450">
+                      Partnership with XEND Finance.
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="md:hidden place-self-center">
+              <DottedLineSvg />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-9 gap-x-5 gap-y-16">
+              <div
+                className={`${styles["cards"]} w-full py-10 col-span-full md:col-span-4`}
+              >
+                <p className={`${styles["card-title"]} mb-5 pl-8`}>Q2, 2021</p>
+                <ul className={`${styles["card-details"]}`}>
+                  <li className="flex mb-3">
+                    <span className="mr-3">
+                      <img src={trophySvg} alt="" />
+                    </span>
+                    <span className="text-gray-450">
+                      Integrating more stable coins.
+                    </span>
+                  </li>
+                  <li className="flex mb-3">
+                    <span className="mr-3">
+                      <img src={trophySvg} alt="" />
+                    </span>
+                    <span className="text-gray-450">
+                      More marketing and community expansion.
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div className="place-self-center">
+                <DottedLineSvg />
+              </div>
+              <div
+                className={`${styles["cards"]} w-full py-10 col-span-full md:col-span-4 lg:col-start-6`}
+              >
+                <p className={`${styles["card-title"]} mb-5 pl-8`}>Q3, 2022</p>
+                <ul className={`${styles["card-details"]}`}>
+                  <li className="flex mb-3">
+                    <span className="mr-3">
+                      <img src={trophySvg} alt="" />
+                    </span>
+                    <span className="text-gray-450">Pre-Seed Raise</span>
+                  </li>
+                  <li className="flex mb-3">
+                    <span className="mr-3">
+                      <img src={trophySvg} alt="" />
+                    </span>
+                    <span className="text-gray-450">
+                      Expansion of team and further development
+                    </span>
+                  </li>
+                  <li className="flex mb-3">
+                    <span className="mr-3">
+                      <img src={trophySvg} alt="" />
+                    </span>
+                    <span className="text-gray-450">
+                      Rolling out new features
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer className="container text-center pb-16 lg:py-16">
+        <span>Copyright {currentYear}, Beima Group</span>
+      </footer>
+    </main>
   );
 }
 
