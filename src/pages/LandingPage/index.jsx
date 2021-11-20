@@ -17,7 +17,7 @@ import {
   YellowCrosses,
 } from "../../assets/svg";
 
-import { Button, Header } from "../../components";
+import { Button } from "../../components";
 import styles from "./landing-page.module.css";
 
 function LandingPage(props) {
@@ -202,7 +202,7 @@ function LandingPage(props) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 grid-rows-2 gap-7 ">
             <div
-              className={`${styles["cards"]} w-full py-10 col-span-1 lg:col-span-2 text-center`}
+              className={`${styles["cards"]} w-full py-10 col-span-1 lg:col-span-2`}
             >
               <p className={`${styles["card-title"]} mb-4`}>
                 Automated Savings
@@ -212,7 +212,7 @@ function LandingPage(props) {
               </p>
             </div>
             <div
-              className={`${styles["cards"]} w-full py-10 col-span-1 lg:col-span-2 text-center`}
+              className={`${styles["cards"]} w-full py-10 col-span-1 lg:col-span-2`}
             >
               <p className={`${styles["card-title"]} mb-4`}>High interests</p>
               <p className={`${styles["card-details"]}`}>
@@ -221,7 +221,7 @@ function LandingPage(props) {
               </p>
             </div>
             <div
-              className={`${styles["cards"]} w-full py-10 col-span-1 lg:col-span-2 text-center`}
+              className={`${styles["cards"]} w-full py-10 col-span-1 lg:col-span-2`}
             >
               <p className={`${styles["card-title"]} mb-4`}>Security</p>
               <p className={`${styles["card-details"]}`}>
@@ -230,7 +230,7 @@ function LandingPage(props) {
               </p>
             </div>
             <div
-              className={`${styles["cards"]} w-full py-10 col-span-1 lg:col-span-2 text-center lg:col-start-2`}
+              className={`${styles["cards"]} w-full py-10 col-span-1 lg:col-span-2 lg:col-start-2`}
             >
               <p className={`${styles["card-title"]} mb-4`}>
                 Decentralized and Transparent
@@ -241,7 +241,7 @@ function LandingPage(props) {
               </p>
             </div>
             <div
-              className={`${styles["cards"]} w-full py-10 col-span-1 lg:col-span-2 text-center`}
+              className={`${styles["cards"]} w-full py-10 col-span-1 lg:col-span-2`}
             >
               <p className={`${styles["card-title"]} mb-4`}>
                 Approved Withdrawals
