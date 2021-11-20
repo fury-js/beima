@@ -3,14 +3,14 @@ import { useHistory } from "react-router-dom";
 import { useAppContext } from "../../contexts/appContext";
 import styles from "./connect-button.module.css";
 
-function ConnectButton() {
+// function ConnectButton() {
   const history = useHistory();
   const { handleWalletConnect, hasMetaMask } = useAppContext();
 
   async function connect() {
     const connectionStatus = await handleWalletConnect();
     if (!connectionStatus) return;
-    history.push("/dashboard");
+    // history.push("/dashboard");
   }
 
   return (
