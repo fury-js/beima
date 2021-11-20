@@ -235,7 +235,7 @@
 
 .container .section_4 .cards {
   color: #fff;
-  padding: 60px;
+  padding: 50px 40px;
   background: linear-gradient(
     90.45deg,
     rgba(31, 31, 31, 0.28) 0.45%,
@@ -243,6 +243,12 @@
   );
   border: 0.5px solid #423a3a;
   border-radius: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .container .section_4 .cards {
+    padding: 60px;
+  }
 }
 
 .container .section_4 .cards .card-title {
@@ -328,6 +334,11 @@
     width: 120px;
     transform: rotate(0deg);
   }
+}
+
+.section_6 .cards img {
+  min-width: 20px;
+  min-height: 20px;
 }
 
 .cards {
