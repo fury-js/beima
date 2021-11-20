@@ -1,10 +1,10 @@
 import { Button } from "../Button";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { useAppContext } from "../../contexts/appContext";
 import styles from "./connect-button.module.css";
 
-// function ConnectButton() {
-  const history = useHistory();
+function ConnectButton() {
+  // const history = useHistory();
   const { handleWalletConnect, hasMetaMask } = useAppContext();
 
   async function connect() {
