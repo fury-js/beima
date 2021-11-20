@@ -68,9 +68,33 @@
   position: relative;
 }
 
+.people_image_div::before {
+  content: "";
+  border-radius: 50%;
+  position: absolute;
+  left: 0px;
+  top: 10px;
+  margin: auto;
+  height: 450px;
+  width: 450px;
+  background: rgba(207, 13, 255, 0.3);
+  filter: blur(150px);
+}
+
+@media screen and (min-width: 768px) {
+  .people_image_div::before {
+    left: 40px;
+    top: 280px;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .people_image_div {
     top: -10px;
+  }
+  .people_image_div::before {
+    left: 100px;
+    top: auto;
   }
 }
 
@@ -99,15 +123,12 @@
   color: #fff;
 }
 
-.pension_earnings svg path:last-child {
-  /* display: none; */
+.section_1 {
+  /* background: #0c1228; */
+  /* background: rgba(207, 13, 255, 0.3);
+filter: blur(300px);
+transform: rotate(89.93deg); */
 }
-/* 
-.pension_earnings svg path {
-  stroke-dasharray: 5;
-  stroke-dashoffset: 5;
-  animation: dash 5s cubic-bezier(0.92, -0.22, 0.78, 0.87) forwards;
-} */
 
 @keyframes dash {
   to {

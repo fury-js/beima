@@ -51,10 +51,11 @@ li {
 }
 
 .App {
-  background-image: radial-gradient(
+  /* background-image: radial-gradient(
       127.72% 166.96% at 95.03% 7.47%,
       rgba(1, 192, 231, 0.07) 0%,
       rgba(154, 4, 233, 0.07) 100%
     ),
-    linear-gradient(95.3deg, #1c1e22 11.08%, #090909 97.41%);
+    linear-gradient(95.3deg, #1c1e22 11.08%, #090909 97.41%); */
+  background: #0c1228;
 }
