@@ -1,0 +1,92 @@
+.sideBarCon {
+  /* width: 100%; */
+  width: 270px;
+  /* padding: 2.5rem 0rem; */
+  height: 100vh;
+  background: #100E18;
+  border-radius: 0px 30px 30px 0px;
+  overflow-y: auto;
+  position: fixed;
+}
+
+.nduLogo {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .nduLogo {
+    display: block;
+    margin: auto;
+  }
+}
+
+/* @media screen and (min-width: 1280px) {
+  .sideBarCon {
+    max-width: 187px;
+    padding: 2.5rem 2rem;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .sideBarCon {
+    max-width: 250px;
+    padding: 2.5rem 3rem;
+  }
+} */
+
+.sideBarCon > ul {
+  margin-top: 50px;
+  padding: 0px;
+}
+
+.sideBarCon > ul > li > a {
+  display: flex;
+  align-items: center;
+  /* text-align: center; */
+}
+
+
+.sideBarCon > ul li span {
+  display: block;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  color: #7987a5;
+  margin: 0px 0px 0px 20px;
+}
+
+.iconCon {
+  background: #eceff7;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  padding: 15px;
+}
+
+.iconCon.active {
+  background: #eceff7;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  padding: 15px;
+}
+
+.sideBarCon > ul > li a {
+  padding: 5px 10px;
+}
+
+.sideBarCon > ul > li a:hover .iconCon,
+.iconCon.active {
+  background: #022655;
+  box-shadow: 0px 10px 20px rgba(88, 92, 229, 0.25);
+  color: #1c295d;
+}
+
+.sideBarCon > ul > li a:hover .iconCon .sideBarIcon > path,
+.sideBarCon > ul > li a:hover .iconCon .sideBarIcon > rect,
+.iconCon.active .sideBarIcon > path,
+.iconCon.active .sideBarIcon > rect {
+  fill: white;
+}

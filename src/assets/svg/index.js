@@ -14,6 +14,12 @@ import securitySvg from "./security.svg";
 import apySvg from "./apy.svg";
 import trophySvg from "./trophy.svg";
 
+import userSvg from "./user.svg";
+import pensionDueSvg from "./pension_due.svg";
+import { ReactComponent as pensionSvg } from "./pension.svg";
+import { ReactComponent as totalSvg } from "./total.svg";
+import { ReactComponent as totalBalSvg } from "./totalBal.svg";
+
 export {
   BeimaLogo,
   YellowCrosses,
@@ -29,4 +35,9 @@ export {
   apySvg,
   trophySvg,
   DottedLineSvg,
+  pensionSvg,
+  totalSvg,
+  totalBalSvg,
+  userSvg,
+  pensionDueSvg,
 };
