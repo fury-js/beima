@@ -1,3 +1,7 @@
 export * from "./Header"
 export * from "./Button"
 export * from "./ConnectButton"
+export * from "./SideBar"
+export * from "./Toasts"
+export * from "./Loader"
+export * from "./CloseButton"

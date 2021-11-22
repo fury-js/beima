@@ -1,16 +1,16 @@
 import { Button } from "../Button";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useAppContext } from "../../contexts/appContext";
 import styles from "./connect-button.module.css";
 
 function ConnectButton() {
-  // const history = useHistory();
-  const { handleWalletConnect, hasMetaMask } = useAppContext();
+  const history = useHistory();
+  const { handleWalletConnect, hasMetaMask, isConnected } = useAppContext();
 
   async function connect() {
     const connectionStatus = await handleWalletConnect();
     if (!connectionStatus) return;
-    // history.push("/dashboard");
+    history.push("/dashboard");
   }
 
   return (
@@ -29,7 +29,7 @@ function ConnectButton() {
       )}
       {hasMetaMask && (
         <Button onClick={connect} className="font-medium">
-          Connect Wallet
+          {isConnected ? "Open Dashboard" : "Connect Wallet"}
         </Button>
       )}
     </div>

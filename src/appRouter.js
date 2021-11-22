@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 
 import { Redirect, Route, Switch, useLocation } from "react-router-dom";
-import { Header } from "./components";
-
-import { DashboardHome, LandingPage } from "./pages";
+import { MainLayout, DashboardLayout } from "./layouts";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -18,11 +16,10 @@ function ScrollToTop() {
 const AppRouter = () => {
   return (
     <>
-      <Header />
       <ScrollToTop />
       <Switch>
-        <Route path="/dashboard" render={(props) => <DashboardHome />} />
-        <Route path="/" render={(props) => <LandingPage />} />
+        <Route path="/dashboard" render={(props) => <DashboardLayout />} />
+        <Route path="/" render={(props) => <MainLayout />} />
         <Route path="*" render={(props) => <Redirect to="/" />} />
       </Switch>
     </>
