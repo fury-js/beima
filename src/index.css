@@ -17,8 +17,10 @@ body {
   --app-grey: #9c9c9c;
   --app-blue: #2952e3;
   --app-red: #f84550;
+  --app-secondary-red: #f63e50;
   --app-yellow: #e9ba42;
   --app-grey: #717171;
+  --app-green: #03a65a;
   --app-primary-text: poppins;
   --app-border-radius-sm: 10px;
   --app-border-radius-md: 15px;
@@ -48,8 +50,4 @@ li {
 
 .text-gray-450 {
   color: var(--app-grey);
-}
-
-.App {
-  background: #0c1228;
 }
