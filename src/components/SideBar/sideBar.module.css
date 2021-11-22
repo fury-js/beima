@@ -1,13 +1,29 @@
 .container {
-  width: 100%;
-  /* max-width: 140px; */
-  /* padding: 2.5rem 0rem; */
+  position: fixed;
+  left: -300px;
+  width: 270px;
+  max-width: 100%;
   padding-bottom: 2.5rem;
   height: 100vh;
   background-color: #0e1020;
-  border-radius: 0px 30px 30px 0px;
-  position: sticky;
   top: 0;
+  z-index: var(--sidebar-z-index);
+  box-shadow: 10px 16px 19px rgb(0 0 0 / 20%);
+  transition: 0.25s ease-in-out;
+}
+
+.container.active {
+  left: 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    border-radius: 0px 30px 30px 0px;
+    box-shadow: none;
+    position: sticky;
+    left: 0px;
+    width: 100%;
+  }
 }
 
 .logo {
@@ -17,14 +33,12 @@
 @media screen and (min-width: 768px) {
   .container {
     max-width: 220px;
-    /* padding: 0rem 1rem 0rem 2rem; */
   }
 }
 
 @media screen and (min-width: 1280px) {
   .container {
     max-width: 250px;
-    /* padding: 0rem 1rem 0rem 2rem; */
   }
 }
 
@@ -62,8 +76,13 @@
   fill: #7611f7;
 }
 
-.container .icon.active rect:first-child {
+.container .icon-container.active .icon rect:first-child {
   fill: #7611f7;
+}
+
+.container .icon-container.active {
+  background-color: #19223c;
+  border-radius: 0px 100px 100px 0px;
 }
 
 /* @media screen and (min-width: 1280px) {

@@ -8,6 +8,7 @@ import { ReactComponent as TotalBalSvg } from "./totalBal.svg";
 import { ReactComponent as DashHomeIcon } from "./dash-icon.svg";
 import { ReactComponent as DashUserIcon } from "./dash-user.svg";
 import { ReactComponent as DashHistoryIcon } from "./history.svg";
+import { ReactComponent as MenuIcon } from "./menu.svg";
 
 import YellowCrosses from "./yellow-cross.svg";
 import airbnbLogo from "./airbnb.svg";
@@ -55,4 +56,5 @@ export {
   DashHomeIcon,
   DashUserIcon,
   DashHistoryIcon,
+  MenuIcon,
 };
