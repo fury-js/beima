@@ -1,6 +1,5 @@
 import React from "react";
 import { BalanceCard } from "../../components/Cards/BalanceCard";
-import { DashboardLayout } from "../../layouts/dashboard";
 import styles from "./dashboard-home.module.css";
 import {
   totalBalSvg,
@@ -15,7 +14,6 @@ import {
   piechartImage,
 } from "../../assets/images";
 import { PensionsCard } from "../../components/Cards/PensionsCard";
-import { Header } from "../../components";
 
 function DashboardHome(props) {
   // Constants
@@ -27,9 +25,8 @@ function DashboardHome(props) {
   ];
 
   return (
-    <DashboardLayout>
-      <Header />
-      <div className={`${styles["container"]} container py-5`}>
+    <main className={`${styles["container"]} container py-5`}>
+      <div className={`container py-5`}>
         <h1 className={styles.pageText + " text-white mb-8"}>Dashboard</h1>
         <div className="grid grid-cols-6 gap-4">
           <div className="col-span-6 md:col-span-3 lg:col-span-2">
@@ -58,7 +55,7 @@ function DashboardHome(props) {
           </div>
         </div>
       </div>
-      <div className={`${styles["container"]} container py-14`}>
+      <div className={`container py-14`}>
         <h4 className="text-white mb-5">Pension plans</h4>
         <div className="grid grid-cols-4 gap-4">
           <div className="col-span-4 md:col-span-2 lg:col-span-1">
@@ -92,7 +89,7 @@ function DashboardHome(props) {
           <button className="ml-auto">View</button>
         </div>
       </div>
-    </DashboardLayout>
+    </main>
   );
 }
 
