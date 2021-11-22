@@ -1,11 +1,13 @@
 import { ReactComponent as CircleLoader } from "./circle-loader.svg";
 import { ReactComponent as BeimaLogo } from "./logo.svg";
 import { ReactComponent as DottedLineSvg } from "./dotted-line.svg";
-import { ReactComponent as DashIcon } from "./dash-icon.svg";
 import { ReactComponent as CloseIcon } from "./close-btn.svg";
-import { ReactComponent as pensionSvg } from "./pension.svg";
-import { ReactComponent as totalSvg } from "./total.svg";
-import { ReactComponent as totalBalSvg } from "./totalBal.svg";
+import { ReactComponent as PensionSvg } from "./pension.svg";
+import { ReactComponent as TotalSvg } from "./total.svg";
+import { ReactComponent as TotalBalSvg } from "./totalBal.svg";
+import { ReactComponent as DashHomeIcon } from "./dash-icon.svg";
+import { ReactComponent as DashUserIcon } from "./dash-user.svg";
+import { ReactComponent as DashHistoryIcon } from "./history.svg";
 
 import YellowCrosses from "./yellow-cross.svg";
 import airbnbLogo from "./airbnb.svg";
@@ -40,15 +42,17 @@ export {
   apySvg,
   trophySvg,
   DottedLineSvg,
-  DashIcon,
   greenBubblesSvg,
   redBubblesSvg,
   CloseIcon,
   successTickSvg,
   failureTickSvg,
-  pensionSvg,
-  totalSvg,
-  totalBalSvg,
+  PensionSvg,
+  TotalSvg,
+  TotalBalSvg,
   userSvg,
   pensionDueSvg,
+  DashHomeIcon,
+  DashUserIcon,
+  DashHistoryIcon,
 };

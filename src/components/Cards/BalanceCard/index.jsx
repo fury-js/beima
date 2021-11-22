@@ -11,7 +11,7 @@ const BalanceCard = ({ Icon, headText, amount, type }) => {
     >
       <div className={`py-2 px-3 gap-3`}>{Icon ? <Icon /> : ""}</div>
       <div className="flex flex-col justify-center h-full">
-        <h1>{headText}</h1>
+        <p>{headText}</p>
         <p>{amount}</p>
       </div>
     </div>

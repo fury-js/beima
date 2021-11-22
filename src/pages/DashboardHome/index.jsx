@@ -2,9 +2,9 @@ import React from "react";
 import { BalanceCard } from "../../components/Cards/BalanceCard";
 import styles from "./dashboard-home.module.css";
 import {
-  totalBalSvg,
-  pensionSvg,
-  totalSvg,
+  TotalBalSvg,
+  PensionSvg,
+  TotalSvg,
   pensionDueSvg,
 } from "../../assets/svg";
 import {
@@ -21,28 +21,28 @@ function DashboardHome() {
       <div className={`py-5`}>
         <h1 className={styles.pageText + " text-white mb-8"}>Dashboard</h1>
         <div className="grid grid-cols-6 gap-4">
-          <div className="col-span-6 md:col-span-3 lg:col-span-2">
+          <div className="col-span-6 md:col-span-3 xl:col-span-2">
             <BalanceCard
               type="totalBal"
               headText="Total balance"
               amount="$131,810.16"
-              Icon={totalBalSvg}
+              Icon={TotalBalSvg}
             />
           </div>
-          <div className="col-span-6 md:col-span-3 lg:col-span-2">
+          <div className="col-span-6 md:col-span-3 xl:col-span-2">
             <BalanceCard
               type="outline"
               headText="Pension balance"
               amount="$84,605.74"
-              Icon={pensionSvg}
+              Icon={PensionSvg}
             />
           </div>
-          <div className="col-span-6 md:col-span-3 lg:col-span-2">
+          <div className="col-span-6 md:col-span-3 xl:col-span-2">
             <BalanceCard
               type="outline"
               headText="Total interest"
               amount="$84,605.74"
-              Icon={totalSvg}
+              Icon={TotalSvg}
             />
           </div>
         </div>

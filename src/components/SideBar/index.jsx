@@ -2,47 +2,54 @@ import React from "react";
 import styles from "./sideBar.module.css";
 
 import { Link, useLocation } from "react-router-dom";
-import { BeimaLogo, DashIcon } from "../../assets/svg";
+import {
+  BeimaLogo,
+  DashHistoryIcon,
+  DashHomeIcon,
+  DashUserIcon,
+} from "../../assets/svg";
 
 function SideBar() {
   const activeRoute = useLocation().pathname;
 
-  const linkClass = (route) => {
-    if (activeRoute.includes(route))
-      return `${styles["icon-container"]} ${styles["active"]}`;
+  const activeIconClass = (route) => {
+    if (activeRoute === route || activeRoute === route + "/")
+      return `${styles["icon"]} ${styles["active"]}`;
 
-    return `${styles["icon-container"]}`;
+    return `${styles["icon"]}`;
   };
 
   return (
-    <div className={`${styles["container"]} px-10 hidden md:block`}>
-      <div className="flex items-end py-10">
+    <div className={`${styles["container"]} hidden md:block`}>
+      <div className="flex items-end py-10 pl-10">
         <BeimaLogo className={`${styles.logo}`} />
         <span className="ml-3 text-white text-2xl">Beima</span>
       </div>
       <ul>
         <li className="flex mb-8">
-          <Link to="/dashboard/user">
-            <div className={linkClass("/dashboard")}>
-              <DashIcon className={`${styles["icon"]}`} />
+          <Link to="/dashboard">
+            <div className={`${styles["icon-container"]} gap-4 pl-10`}>
+              <DashHomeIcon className={activeIconClass("/dashboard")} />
+              <span>Dashboard</span>
             </div>
-            <span>Dashboard</span>
+          </Link>
+        </li>
+        <li className="flex mb-8">
+          <Link to="/dashboard/history">
+            <div className={`${styles["icon-container"]} gap-4 pl-10`}>
+              <DashHistoryIcon
+                className={activeIconClass("/dashboard/history")}
+              />
+              <span>History</span>
+            </div>
           </Link>
         </li>
         <li className="flex mb-8">
           <Link to="/dashboard/user">
-            <div className={linkClass("/dashboard/user/history")}>
-              {/* <MoneyIcon className={`${styles["icon"]}`} /> */}
+            <div className={`${styles["icon-container"]} gap-4 pl-10`}>
+              <DashUserIcon className={activeIconClass("/dashboard/user")} />
+              <span>User</span>
             </div>
-            <span>History</span>
-          </Link>
-        </li>
-        <li className="flex mb-8">
-          <Link to="/dashboard/user">
-            <div className={linkClass("/dashboard/user/profile")}>
-              {/* <UserIcon className={`${styles["icon"]}`} /> */}
-            </div>
-            <span>Profile</span>
           </Link>
         </li>
       </ul>

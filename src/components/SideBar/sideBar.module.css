@@ -1,7 +1,8 @@
 .container {
   width: 100%;
   /* max-width: 140px; */
-  padding: 2.5rem 0rem;
+  /* padding: 2.5rem 0rem; */
+  padding-bottom: 2.5rem;
   height: 100vh;
   background-color: #0e1020;
   border-radius: 0px 30px 30px 0px;
@@ -15,17 +16,56 @@
 
 @media screen and (min-width: 768px) {
   .container {
-    /* max-width: 185px; */
-    padding: 0rem 2rem;
+    max-width: 220px;
+    /* padding: 0rem 1rem 0rem 2rem; */
   }
 }
 
 @media screen and (min-width: 1280px) {
   .container {
-    /* max-width: 250px; */
-    padding: 0rem 2rem;
+    max-width: 250px;
+    /* padding: 0rem 1rem 0rem 2rem; */
   }
 }
+
+.container > ul > li > a {
+  display: block;
+  width: 100%;
+  padding-right: 10px;
+}
+.container > ul > li > a > div {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.container > ul > li > a > div:hover {
+  background-color: #19223c;
+  border-radius: 0px 100px 100px 0px;
+  transition: 0.2s ease-in-out;
+}
+
+.container > ul > li > a > div * {
+  transition: 0.2s ease-in-out;
+}
+
+.container > ul > li > a > div svg rect:first-child {
+  fill: #2c293e;
+}
+
+.container > ul > li > a > div:hover svg rect:first-child {
+  fill: #7611f7;
+}
+
+.container .icon.active rect:first-child {
+  fill: #7611f7;
+}
+
 /* @media screen and (min-width: 1280px) {
   .container {
     max-width: 187px;
@@ -39,16 +79,12 @@
     padding: 2.5rem 3rem;
   }
 } */
-
+/* 
 .container > ul {
   padding: 0px;
 }
 
-.container > ul > li > a {
-  display: flex;
-  align-items: center;
-  /* text-align: center; */
-}
+
 
 .container > ul li span {
   display: block;
@@ -83,14 +119,14 @@
 
 .container > ul > li a:hover .icon-container,
 .icon-container.active {
-  background: #022655;
+  background: #7611f7;
   box-shadow: 0px 10px 20px rgba(88, 92, 229, 0.25);
   color: #1c295d;
-}
+} */
 
-.container > ul > li a:hover .icon-container .icon > path,
+/* .container > ul > li a:hover .icon-container .icon > path,
 .container > ul > li a:hover .icon-container .icon > rect,
 .icon-container.active .icon > path,
 .icon-container.active .icon > rect {
   fill: white;
-}
+} */
