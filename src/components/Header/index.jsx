@@ -16,7 +16,7 @@ function Header(props) {
         <span className="ml-3 text-2xl">Beima</span>
       </div>}
       {isDashboardPath() && <div className="ml-auto flex items-center">
-        <img src={userSvg} />
+        <img src={userSvg} alt="user" />
         <span className="ml-3"><strong>Atoms</strong> Kruft</span>
       </div>}
     </header>

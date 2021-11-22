@@ -15,15 +15,7 @@ import {
 } from "../../assets/images";
 import { PensionsCard } from "../../components/Cards/PensionsCard";
 
-function DashboardHome(props) {
-  // Constants
-  const pensionCards = [
-    { text: "Retirement plan", icon: "../../../assets/svg/lock.png" },
-    { text: "10yrs plan", icon: "../../../assets/svg/lock.png" },
-    { text: "3yrs plan", icon: "../../../assets/svg/lock.png" },
-    { text: "Flexible time plan", icon: "../../../assets/svg/lock.png" },
-  ];
-
+function DashboardHome() {
   return (
     <main className={`${styles["container"]} container py-5`}>
       <div className={`container py-5`}>
@@ -59,16 +51,24 @@ function DashboardHome(props) {
         <h4 className="text-white mb-5">Pension plans</h4>
         <div className="grid grid-cols-4 gap-4">
           <div className="col-span-4 md:col-span-2 lg:col-span-1">
-            <PensionsCard Icon={lockImage} text="Retirement plan" />
+            <PensionsCard
+              Icon={lockImage}
+              text="Retirement plan"
+              alt="retirement"
+            />
           </div>
           <div className="col-span-4 md:col-span-2 lg:col-span-1">
-            <PensionsCard Icon={cubeImage} text="10yrs plan" />
+            <PensionsCard Icon={cubeImage} text="10yrs plan" alt="10yrs" />
           </div>
           <div className="col-span-4 md:col-span-2 lg:col-span-1">
-            <PensionsCard Icon={piechartImage} text="3yrs plan" />
+            <PensionsCard Icon={piechartImage} text="3yrs plan" alt="3yrs" />
           </div>
           <div className="col-span-4 md:col-span-2 lg:col-span-1">
-            <PensionsCard Icon={barchartImage} text="Flexible time plan" />
+            <PensionsCard
+              Icon={barchartImage}
+              text="Flexible time plan"
+              alt="lexible"
+            />
           </div>
         </div>
       </div>
@@ -81,7 +81,7 @@ function DashboardHome(props) {
             styles.dueCard + " col-span-3 lg:col-span-1 flex flex-col p-5"
           }
         >
-          <img src={pensionDueSvg} />
+          <img src={pensionDueSvg} alt="pension_due" />
           <h5>Pension Due</h5>
           <p className="my-3">
             Your closest accured pension will be due in <span>3yrs</span>
