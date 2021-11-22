@@ -17,8 +17,8 @@ import { PensionsCard } from "../../components/Cards/PensionsCard";
 
 function DashboardHome() {
   return (
-    <main className={`${styles["container"]} container py-5`}>
-      <div className={`container py-5`}>
+    <main className={`${styles["container"]} container  py-5`}>
+      <div className={`py-5`}>
         <h1 className={styles.pageText + " text-white mb-8"}>Dashboard</h1>
         <div className="grid grid-cols-6 gap-4">
           <div className="col-span-6 md:col-span-3 lg:col-span-2">
@@ -47,7 +47,7 @@ function DashboardHome() {
           </div>
         </div>
       </div>
-      <div className={`container py-14`}>
+      <div className={` py-14`}>
         <h4 className="text-white mb-5">Pension plans</h4>
         <div className="grid grid-cols-4 gap-4">
           <div className="col-span-4 md:col-span-2 lg:col-span-1">
@@ -72,9 +72,7 @@ function DashboardHome() {
           </div>
         </div>
       </div>
-      <div
-        className={styles.viewArea + " grid grid-cols-3 gap-4 container py-5"}
-      >
+      <div className={styles.viewArea + " grid grid-cols-3 gap-4  py-5"}>
         <div className={styles.plannerCard + " col-span-3 lg:col-span-2"}></div>
         <div
           className={

@@ -1,9 +1,8 @@
-.container{
-  cursor: pointer;
+.container {
   font-family: Inter;
   font-style: normal;
   letter-spacing: -0.02em;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .container svg {
@@ -25,13 +24,26 @@
 
 .card-totalBal {
   height: 102px;
-  background: radial-gradient(50% 50% at 50% 50%, #EB5757 0%, rgba(235, 87, 87, 0.67) 31.25%, rgba(235, 87, 87, 0) 100%), conic-gradient(from 180deg at 50% 50%, #5792EB 0deg, #F24AE1 90deg, #FF3535 180deg, #FEBF1E 270deg, #5792EB 360deg);
+  background: radial-gradient(
+      50% 50% at 50% 50%,
+      #eb5757 0%,
+      rgba(235, 87, 87, 0.67) 31.25%,
+      rgba(235, 87, 87, 0) 100%
+    ),
+    conic-gradient(
+      from 180deg at 50% 50%,
+      #5792eb 0deg,
+      #f24ae1 90deg,
+      #ff3535 180deg,
+      #febf1e 270deg,
+      #5792eb 360deg
+    );
   border-radius: 15px;
 }
 
 .card-outline {
   height: 102px;
-  border: 2px solid #36415F;
+  border: 2px solid #36415f;
   border-radius: 15px;
 }
 
