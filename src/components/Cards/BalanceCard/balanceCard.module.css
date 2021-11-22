@@ -1,0 +1,51 @@
+.container{
+  cursor: pointer;
+  font-family: Inter;
+  font-style: normal;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+
+.container svg {
+  width: 25px;
+  height: 25px;
+}
+
+.container h1 {
+  font-weight: 500;
+  font-size: 1.1rem;
+  line-height: 119.7%;
+}
+
+.container p {
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 119.7%;
+}
+
+.card-totalBal {
+  height: 102px;
+  background: radial-gradient(50% 50% at 50% 50%, #EB5757 0%, rgba(235, 87, 87, 0.67) 31.25%, rgba(235, 87, 87, 0) 100%), conic-gradient(from 180deg at 50% 50%, #5792EB 0deg, #F24AE1 90deg, #FF3535 180deg, #FEBF1E 270deg, #5792EB 360deg);
+  border-radius: 15px;
+}
+
+.card-outline {
+  height: 102px;
+  border: 2px solid #36415F;
+  border-radius: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .container svg {
+    width: 55px;
+    height: 55px;
+  }
+
+  /* .container h1 {
+    font-size: 14px;
+  }
+
+  .container p {
+    font-size: 11px;
+  } */
+}

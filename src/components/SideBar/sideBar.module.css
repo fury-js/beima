@@ -1,49 +1,51 @@
-.container {
-  width: 100%;
-  max-width: 140px;
-  padding: 2.5rem 0rem;
-  min-height: 100vh;
-  background-color: #0e1020;
+.sideBarCon {
+  /* width: 100%; */
+  width: 270px;
+  /* padding: 2.5rem 0rem; */
+  height: 100vh;
+  background: #100e18;
   border-radius: 0px 30px 30px 0px;
+  overflow-y: auto;
+  position: fixed;
 }
 
-.logo {
-  height: 40px;
+.nduLogo {
+  display: none;
 }
 
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 185px;
-    padding: 2.5rem 2rem;
+@media screen and (min-width: 1024px) {
+  .nduLogo {
+    display: block;
+    margin: auto;
   }
 }
 
-@media screen and (min-width: 1280px) {
-  .container {
-    max-width: 250px;
+/* @media screen and (min-width: 1280px) {
+  .sideBarCon {
+    max-width: 187px;
     padding: 2.5rem 2rem;
   }
 }
 
 @media screen and (min-width: 1600px) {
-  .container {
-    max-width: 300px;
+  .sideBarCon {
+    max-width: 250px;
     padding: 2.5rem 3rem;
   }
-}
+} */
 
-.container > ul {
+.sideBarCon > ul {
   margin-top: 50px;
   padding: 0px;
 }
 
-.container > ul > li {
+.sideBarCon > ul > li > a {
   display: flex;
-  justify-content: center;
-  text-align: center;
+  align-items: center;
+  /* text-align: center; */
 }
 
-.container > ul li span {
+.sideBarCon > ul li span {
   display: block;
   font-style: normal;
   font-weight: 500;
@@ -51,7 +53,7 @@
   line-height: 18px;
   text-align: center;
   color: #7987a5;
-  margin: 10px 0px 0px 0px;
+  margin: 0px 0px 0px 20px;
 }
 
 .iconCon {
@@ -70,19 +72,19 @@
   padding: 15px;
 }
 
-.container > ul > li a {
+.sideBarCon > ul > li a {
   padding: 5px 10px;
 }
 
-.container > ul > li a:hover .iconCon,
+.sideBarCon > ul > li a:hover .iconCon,
 .iconCon.active {
   background: #022655;
   box-shadow: 0px 10px 20px rgba(88, 92, 229, 0.25);
   color: #1c295d;
 }
 
-.container > ul > li a:hover .iconCon .sideBarIcon > path,
-.container > ul > li a:hover .iconCon .sideBarIcon > rect,
+.sideBarCon > ul > li a:hover .iconCon .sideBarIcon > path,
+.sideBarCon > ul > li a:hover .iconCon .sideBarIcon > rect,
 .iconCon.active .sideBarIcon > path,
 .iconCon.active .sideBarIcon > rect {
   fill: white;

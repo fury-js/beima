@@ -3,6 +3,9 @@ import { ReactComponent as BeimaLogo } from "./logo.svg";
 import { ReactComponent as DottedLineSvg } from "./dotted-line.svg";
 import { ReactComponent as DashIcon } from "./dash-icon.svg";
 import { ReactComponent as CloseIcon } from "./close-btn.svg";
+import { ReactComponent as pensionSvg } from "./pension.svg";
+import { ReactComponent as totalSvg } from "./total.svg";
+import { ReactComponent as totalBalSvg } from "./totalBal.svg";
 
 import YellowCrosses from "./yellow-cross.svg";
 import airbnbLogo from "./airbnb.svg";
@@ -19,6 +22,8 @@ import greenBubblesSvg from "./green-bubbles.svg";
 import redBubblesSvg from "./red-bubbles.svg";
 import successTickSvg from "./success-tick.svg";
 import failureTickSvg from "./failure-tick.svg";
+import userSvg from "./user.svg";
+import pensionDueSvg from "./pension_due.svg";
 
 export {
   BeimaLogo,
@@ -41,4 +46,9 @@ export {
   CloseIcon,
   successTickSvg,
   failureTickSvg,
+  pensionSvg,
+  totalSvg,
+  totalBalSvg,
+  userSvg,
+  pensionDueSvg,
 };
