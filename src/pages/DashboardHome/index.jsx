@@ -17,7 +17,7 @@ import { PensionsCard } from "../../components/Cards/PensionsCard";
 
 function DashboardHome() {
   return (
-    <main className={`${styles["container"]} container py-5`}>
+    <main className={`${styles["container"]} py-5`}>
       <div className={`container py-5`}>
         <h1 className={styles.pageText + " text-white mb-8"}>Dashboard</h1>
         <div className="grid grid-cols-6 gap-4">

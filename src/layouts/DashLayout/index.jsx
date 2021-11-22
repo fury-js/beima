@@ -8,7 +8,7 @@ function DashboardLayout({ children, ...rest }) {
   return (
     <div className={`${styles["container"]}`}>
       <SideBar />
-      <div>
+      <div className={`${styles["content-container"]} md:ml-auto`}>
         <Header />
         <Route path="/" render={(props) => <DashboardHome />} />
       </div>
