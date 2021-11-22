@@ -1,2 +1,2 @@
-export * from "./HowitWorksCard";
-export * from "./HistoryCard";
+export * from "./PensionsCard";
+export * from "./BalanceCard";
