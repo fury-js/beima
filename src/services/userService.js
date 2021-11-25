@@ -4,7 +4,10 @@ import { getActiveWallet, hasEthereum, getBeimaContract } from './web3Service';
 
 
 
-// load user
+/**
+ * User service function to load user details
+ * @returns 
+ */
 export async function getUserDetails() {
 	try {
 		if (!hasEthereum()) return false;
@@ -26,9 +29,14 @@ export async function getUserDetails() {
 	}
 }
 
-
-
-// Register user
+/**
+ * User service function to register user
+ * @param {*} id 
+ * @param {*} asset 
+ * @param {*} userIpfsDetails 
+ * @param {*} amountToSpend 
+ * @param {*} lockPeriodInDays 
+ */
 export async function registerUser(
 	id,
 	asset,
