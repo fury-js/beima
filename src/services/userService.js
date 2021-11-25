@@ -30,11 +30,10 @@ export async function getUserDetails() {
 
 // Register user
 export async function registerUser(
-	id,
 	asset,
 	userIpfsDetails,
 	amountToSpend,
-	lockPeriodInDays,
+	timeDurationOfDepositInDays,
 ) {
 	try {
 		const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -44,11 +43,10 @@ export async function registerUser(
 		// const address = getActiveWallet();
 
 		let result = await beimaContract.register(
-			id,
 			asset,
 			userIpfsDetails,
 			amountToSpend,
-			lockPeriodInDays,
+			timeDurationOfDepositInDays,
 		);
 
 		console.log(result);
