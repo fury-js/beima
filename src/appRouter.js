@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 import { Redirect, Route, Switch, useLocation } from "react-router-dom";
+import { DashboardProvider } from "./contexts/dashboardContext";
 import { MainLayout, DashboardLayout } from "./layouts";
 
 function ScrollToTop() {
@@ -18,7 +19,9 @@ const AppRouter = () => {
     <>
       <ScrollToTop />
       <Switch>
-        <Route path="/dashboard" render={(props) => <DashboardLayout />} />
+        <DashboardProvider>
+          <Route path="/dashboard" render={(props) => <DashboardLayout />} />
+        </DashboardProvider>
         <Route path="/" render={(props) => <MainLayout />} />
         <Route path="*" render={(props) => <Redirect to="/" />} />
       </Switch>
