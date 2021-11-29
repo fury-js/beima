@@ -1,38 +1,84 @@
+/** @format */
+
+import { ethers } from 'ethers';
+import { BeimaAbi } from '../contracts/abis';
+import {
+	BeimaContractAddress,
+} from '../utils';
+
+/**
+ * Web3 Service function to create connection to Metamask
+ * @param {*} setError 
+ * @returns 
+ */
 export const connectToMetaMask = async (setError) => {
+	try {
+		if (!hasEthereum()) return false;
+
+		await window.ethereum.request({ method: 'eth_requestAccounts' });
+
+		return true;
+	} catch (error) {
+		console.log(error);
+		if (setError) setError(error.message ?? error.toString());
+		return { error };
+	}
+};
+
+/**
+ * Web3 Service function to get current active wallet
+ * @returns 
+ */
+export function getActiveWallet() {
+	if (!hasEthereum()) return false;
+	const ethTarget = { ...window.ethereum };
+	if (!ethTarget.selectedAddress) return null;
+	const address = ethTarget.selectedAddress;
+	return address;
+}
+
+/**
+ * Web3 Service function to check if user has any ETH handler for eg. Metamask installed
+ * @returns 
+ */
+export function hasEthereum() {
+	return window.ethereum ? true : false;
+}
+
+/**
+ * Web3 Service function to listen to and detect account changes
+ * @param {*} handler 
+ * @returns 
+ */
+export function listenToAccountChanges(handler) {
+	if (!hasEthereum()) return false;
+
+	window.ethereum.on('accountsChanged', async (accounts) => {
+		handler(accounts[0]);
+	});
+}
+
+/**
+ * Web3 Service function to unmount ETH listeners from browser
+ * @returns {Promise<void>}
+ */
+export async function unmountEthListeners() {
+	window.ethereum.removeListener('accountsChanged', () => {});
+	window.ethereum.removeListener('message', () => {});
+}
+
+/**
+ * Web3 Service function to load contract
+ * @param {*} signer 
+ * @returns 
+ */
+export async function getBeimaContract(signer) {
   try {
     if (!hasEthereum()) return false;
 
-    await window.ethereum.request({ method: "eth_requestAccounts" });
-
-    return true;
-  } catch (error) {
-    console.log(error);
-    if (setError) setError(error.message ?? error.toString());
-    return { error };
+	return new ethers.Contract(BeimaContractAddress, BeimaAbi.abi, signer);
+  } catch (err) {
+    console.log("failed to load contract", err)
   }
-};
 
-export function getActiveWallet() {
-  if (!hasEthereum()) return false;
-  const ethTarget = { ...window.ethereum };
-  if (!ethTarget.selectedAddress) return null;
-  const address = ethTarget.selectedAddress;
-  return address;
-}
-
-export function hasEthereum() {
-  return window.ethereum ? true : false;
-}
-
-export function listenToAccountChanges(handler) {
-  if (!hasEthereum()) return false;
-
-  window.ethereum.on("accountsChanged", async (accounts) => {
-    handler(accounts[0]);
-  });
-}
-
-export async function unmountEthListeners() {
-  window.ethereum.removeListener("accountsChanged", () => {});
-  window.ethereum.removeListener("message", () => {});
 }
