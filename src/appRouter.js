@@ -19,9 +19,7 @@ const AppRouter = () => {
     <>
       <ScrollToTop />
       <Switch>
-        <DashboardProvider>
-          <Route path="/dashboard" render={(props) => <DashboardLayout />} />
-        </DashboardProvider>
+        <Route path="/dashboard" render={(props) => <DashboardLayout />} />
         <Route path="/" render={(props) => <MainLayout />} />
         <Route path="*" render={(props) => <Redirect to="/" />} />
       </Switch>

@@ -45,6 +45,14 @@ function SideBar({ isOpen, onSetOpenSideBar }) {
           </Link>
         </li>
         <li className="flex mb-8">
+          <Link to="/dashboard/pensions">
+            <div className={activeIconClass("/dashboard/pensions")}>
+              <DashHistoryIcon className={`${styles["icon"]}`} />
+              <span className="pl-4">Pensions</span>
+            </div>
+          </Link>
+        </li>
+        <li className="flex mb-8">
           <Link to="/dashboard/history">
             <div className={activeIconClass("/dashboard/history")}>
               <DashHistoryIcon className={`${styles["icon"]}`} />
@@ -52,6 +60,7 @@ function SideBar({ isOpen, onSetOpenSideBar }) {
             </div>
           </Link>
         </li>
+
         <li className="flex mb-8">
           <Link to="/dashboard/user">
             <div className={activeIconClass("/dashboard/user")}>

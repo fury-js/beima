@@ -4,7 +4,7 @@ import styles from "./loader.module.css";
 
 function Loader() {
   const [containerClass, setContainerClass] = useState(
-    `${styles["container"]} `
+    `${styles["container"]}  ${styles["hide"]}`
   );
   const { isLoading } = useLoadingContext();
 

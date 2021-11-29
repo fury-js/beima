@@ -25,7 +25,7 @@ function DashboardHome() {
 
   return (
     <main className={`${styles["container"]} container  py-5`}>
-      {!isRegistered && <ProfileSetupForm />}
+      {/* {!isRegistered && <ProfileSetupForm />} */}
       <div className={`py-5`}>
         <h1 className={styles.pageText + " text-white mb-8"}>Dashboard</h1>
         <div className="grid grid-cols-6 gap-4">
