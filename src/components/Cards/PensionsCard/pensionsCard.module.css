@@ -68,3 +68,68 @@
   width: 50px;
   height: 50px;
 }
+
+.modal-container {
+  font-family: Inter;
+  font-style: normal;
+  color: #FFFFFF;
+}
+
+.modal-container h1 {
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 60px;
+}
+
+.modal-container .icon {
+  height: fit-content !important;
+}
+
+.modal-container h1 span {
+  font-weight: 400;
+}
+
+.modal-container .input-container {
+  height: 42px;
+}
+
+.modal-container .input-container span {
+  width: 63px;
+  height: 100%;
+  background: #A0A2A4;
+  border-radius: 2px 0px 0px 2px;
+}
+
+.modal-container .input-container input {
+  flex: 1;
+  height: 100%;
+  font-size: 14px;
+  line-height: 17px;
+  color: #55555580;
+  
+}
+
+.modal-container .input-container input::placeholder {
+  font-size: 14px;
+  line-height: 17px;
+  color: #55555580;
+}
+
+.modal-container > div:first-child :nth-child(3) {
+  min-height: 51px;
+  background: #3B3D4480;
+  /* background: white; */
+}
+
+.privacy-check-wrapper {
+}
+
+.privacy-check-wrapper span {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.modal-container .modal-icon img {
+  width: 100px;
+  min-width: 100px;
+}
