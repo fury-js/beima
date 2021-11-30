@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 import { Redirect, Route, Switch, useLocation } from "react-router-dom";
+import { DashboardProvider } from "./contexts/dashboardContext";
 import { MainLayout, DashboardLayout } from "./layouts";
 
 function ScrollToTop() {

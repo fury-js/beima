@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { BalanceCard } from "../../components/Cards/BalanceCard";
 import styles from "./dashboard-home.module.css";
+
 import {
   TotalBalSvg,
   PensionSvg,
   TotalSvg,
   pensionDueSvg,
 } from "../../assets/svg";
+
 import {
   lockImage,
   barchartImage,
@@ -16,10 +18,12 @@ import {
 import { PensionsCard } from "../../components/Cards";
 import { Modal } from "../../components";
 import { PensionsCardModal } from "../../components/Cards/PensionsCard/modalContent";
-// import { PensionsCardModal } from "../../components/Cards/PensionsCard/modalContent";
+import { useDashboardContext } from "../../contexts/dashboardContext";
+import { ProfileSetupForm } from "../../components";
 
 function DashboardHome() {
   // State managemnt
+  const { isRegistered } = useDashboardContext();
   const [showModal, setShowModal] = useState("");
 
   // Modal contents
@@ -61,6 +65,7 @@ function DashboardHome() {
 
   return (
     <main className={`${styles["container"]} container  py-5`}>
+      {/* {!isRegistered && <ProfileSetupForm />} */}
       <div className={`py-5`}>
         <h1 className={styles.pageText + " text-white mb-8"}>Dashboard</h1>
         <div className="grid grid-cols-6 gap-4">
