@@ -73,11 +73,11 @@ function DashboardHome() {
         >
           <img src={pensionDueSvg} alt="" />
           <h5>Pension Due</h5>
-          <p className="my-3">
+          <p className="mt-3 mb-5">
             Your closest accured pension will be due by{" "}
             <span>{pensions[0]?.maturityDate}</span>
           </p>
-          <div className="flex justify-start xl:justify-end ">
+          <div className="flex justify-stretch xl:justify-end ">
             <Link to="/dashboard/pensions">View</Link>
           </div>
         </div>

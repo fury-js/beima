@@ -60,7 +60,14 @@
 .dueCard h5 {
   font-weight: bold;
   font-size: 20px;
-  line-height: 119.7%;
+  line-height: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+@media screen and (min-width: 768px) {
+  .dueCard h5 {
+    letter-spacing: 0px;
+  }
 }
 
 .dueCard p {
@@ -76,13 +83,16 @@
 }
 
 .dueCard a {
-  padding: 8px 30px;
-  background: #ffffff;
+  letter-spacing: -0.02em;
+  padding: 12px 30px;
+  background: #fff;
   border-radius: 11px;
   font-weight: 600;
   font-size: 16px;
   line-height: 1.5rem;
   color: #273250;
+  width: 100%;
+  text-align: center;
   /* margin-left: auto; */
 }
 
