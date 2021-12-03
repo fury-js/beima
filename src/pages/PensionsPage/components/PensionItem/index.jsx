@@ -14,8 +14,8 @@ function PensionItem({ details }) {
   return (
     <Link to={`/dashboard/pensions/${details.ipfsHash}`}>
       <div className={`${styles["container"]}`}>
-        <div className="flex p-4 gap-x-5 items-center">
-          <div>
+        <div className="flex flex-wrap sm:flex-nowrap justify-center px-4 py-8 md:py-4 gap-x-5 items-center">
+          <div className="mb-4 md:mb-0">
             <img src={barchartImage} alt="" />
           </div>
           <div className="w-full">
