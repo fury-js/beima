@@ -1,6 +1,7 @@
 .container {
   font-family: Poppins;
   height: 100vh;
+  overflow: auto;
   width: 100%;
   background: rgba(0, 0, 0, 0.55);
   position: fixed;
@@ -32,7 +33,7 @@
 @media screen and (min-width: 768px) {
   .modal {
     width: 740px;
-    height: 510px;
+    height: 514px;
   }
 }
 
@@ -65,23 +66,34 @@
   background-color: #3f1984;
 }
 
-.container .form-title span[title="Go Back"] {
-  left: -60px;
-  position: absolute;
+.container .form-title [title="Go Back"] {
+  font-size: 1.4rem;
+}
+
+@media screen and (min-width: 768px) {
+  .container .form-title [title="Go Back"] {
+    left: -60px;
+    position: absolute;
+  }
+  
+}
+
+.container .form-title [title="Go Back"] span:first-child {
   padding: 20px 16px;
 }
 
-.container .form-title span[title="Go Back"]:hover {
+
+.container .form-title [title="Go Back"]:hover span:first-child {
   outline: 1px solid white;
 }
 
-.container .form-title span[title="Go Back"] svg {
+.container .form-title [title="Go Back"] svg {
   fill: #fff;
   stroke: #fff;
   height: 18px;
 }
 
-.container .form-title span[title="Go Back"]:hover svg path {
+.container .form-title [title="Go Back"]:hover svg path {
   fill: #fff;
 }
 

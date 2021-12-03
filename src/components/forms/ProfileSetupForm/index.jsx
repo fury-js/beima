@@ -20,10 +20,10 @@ const validationSchema = Yup.object({
   email: Yup.string().required("Email is required"),
   phone: Yup.string().required("Phone Number is required"),
   dob: Yup.string().required("Date of birth is required"),
-  NfirstName: Yup.string().required("Next of Kin First Name is required"),
-  NlastName: Yup.string().required("Next of Kin Last Name is required"),
-  Nemail: Yup.string().required("Next of Kin Email is required"),
-  Nphone: Yup.string().required("Next of Kin Phone Number is required"),
+  NfirstName: Yup.string().required("First Name is required"),
+  NlastName: Yup.string().required("Last Name is required"),
+  Nemail: Yup.string().required("Email is required"),
+  Nphone: Yup.string().required("Phone Number is required"),
 });
 
 const initialValues = {
@@ -41,7 +41,7 @@ const initialValues = {
 function ProfileSetupForm() {
   const { toast } = useToastContext();
   const { setIsLoading } = useLoadingContext();
-  const { setIsRegistered } = useDashboardContext();
+  const { setIsRegistered, setUser } = useDashboardContext();
   const currentYear = new Date().getFullYear();
 
   const [page, setPage] = useState(1);
@@ -56,7 +56,7 @@ function ProfileSetupForm() {
   const handleSubmit = (values) => {
     (async () => {
       setIsLoading(true);
-      const userIpfsHash = await ipfsMini.addJSON({
+      const user = {
         firstName: values.firstName,
         lastName: values.lastName,
         email: values.email,
@@ -68,12 +68,14 @@ function ProfileSetupForm() {
           email: values.Nemail,
           phone: values.Nphone,
         },
-      });
+      };
+      const userIpfsHash = await ipfsMini.addJSON(user);
 
       const onRegister = () => {
         setIsLoading(false);
         setIsRegistered(true);
         toast.success("Registration was successful");
+        setUser(user);
       };
 
       const onError = () => {
@@ -92,16 +94,16 @@ function ProfileSetupForm() {
   });
 
   return (
-    <div className={`${styles["container"]}`}>
-      <div className="container">
+    <div className={`${styles["container"]} py- `}>
+      <div className="">
         <div
-          className={`${styles["modal"]} text-white rounded`}
+          className={`${styles["modal"]} py-5 text-white rounded`}
           style={{ backgroundImage: `url(${formsBgImage})` }}
         >
           <div className={`${styles["modal-content"]} pb-20`}>
             <div className={` ${styles["form-title"]}`}>
               {page === 1 && (
-                <div className="flex items-center">
+                <div className="flex flex-wrap items-center mt-32 md:mt-0">
                   <span className={`${styles["colored-prefix"]} mr-2`}>
                     Beima
                   </span>
@@ -109,18 +111,24 @@ function ProfileSetupForm() {
                 </div>
               )}
               {page === 2 && (
-                <div className="flex items-center">
-                  <span
+                <div className="flex flex-wrap items-center">
+                  <div
                     title="Go Back"
-                    className="cursor-pointer"
+                    className="cursor-pointer mt-32 md:mt-0 inline-flex items-center"
                     onClick={() => setPage(1)}
                   >
-                    <LeftArrow />
-                  </span>
-                  <span className={`${styles["colored-prefix"]} mr-2`}>
-                    Next
-                  </span>
-                  <span> of kin details</span>
+                    <span>
+                      <LeftArrow />
+                    </span>
+                    <span className="ml-3 md:hidden">Back</span>
+                  </div>
+
+                  <div className="flex items-center pt-5 md:pt-0">
+                    <span className={`${styles["colored-prefix"]} mr-2`}>
+                      Next
+                    </span>
+                    <span> of kin details</span>
+                  </div>
                 </div>
               )}
             </div>

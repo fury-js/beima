@@ -34,7 +34,6 @@ function ProfilePage(props) {
               <img src={logoImage} alt="" />
             </div>
             <div className="flex items-center justify-center">
-              {/* <img src={userSvg} alt="user" /> */}
               <span className="text-center text-2xl">
                 <strong>{user?.firstName}</strong> {user?.lastName}
               </span>

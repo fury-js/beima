@@ -1,6 +1,6 @@
 .container {
   font-family: Poppins;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   background: rgba(0, 0, 0, 0.55);
   position: fixed;
@@ -21,7 +21,7 @@
 
 .container form {
   position: relative;
-} 
+}
 
 .modal {
   position: relative;
