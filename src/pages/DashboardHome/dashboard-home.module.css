@@ -7,7 +7,7 @@
   font-weight: normal;
   font-size: 36px;
   line-height: 44px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .container h4 {
@@ -20,7 +20,6 @@
 }
 
 .viewArea {
-
 }
 
 .plannerCard {
@@ -35,10 +34,11 @@
   border-radius: 24px;
   font-family: Inter;
   font-style: normal;
-  color: #FFFFFF;
+  color: #ffffff;
   position: relative;
   display: flex;
   justify-content: flex-end;
+  max-width: 300px;
 }
 
 .dueCard img {
@@ -60,22 +60,25 @@
 
 .dueCard p {
   font-size: 15px;
-  line-height: 119.7%;
+  line-height: 1.5rem;
   letter-spacing: -0.02em;
   color: rgba(255, 255, 255, 0.8);
 }
 
 .dueCard p span {
-  font-size: 20px;
+  font-size: 16px;
+  color: #cca9a9;
 }
 
-.dueCard button {
-  width: 104px;
-  height: 38px;
-  background: #FFFFFF;
+.dueCard a {
+  padding: 8px 30px;
+  background: #ffffff;
   border-radius: 11px;
   font-weight: 600;
   font-size: 16px;
-  line-height: 119.7%;
+  line-height: 1.5rem;
   color: #273250;
+  /* margin-left: auto; */
 }
+
+

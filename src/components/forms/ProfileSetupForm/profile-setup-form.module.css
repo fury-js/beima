@@ -1,4 +1,5 @@
 .container {
+  font-family: Poppins;
   height: 100vh;
   width: 100%;
   background: rgba(0, 0, 0, 0.55);
@@ -9,5 +10,138 @@
   justify-content: center;
   align-items: center;
   z-index: var(--overlay-z-index);
-  text-align: center;
+}
+
+.container > div {
+  display: flex;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.container form {
+  position: relative;
+}
+
+.modal {
+  position: relative;
+  max-width: 920px;
+  border-radius: 5px !important;
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    width: 740px;
+    height: 510px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .modal {
+    width: 920px;
+  }
+}
+
+.modal-content {
+  padding: 3rem 2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .modal-content {
+    padding: 3rem 10rem 2.5rem 10rem;
+  }
+}
+
+.container .form-title {
+  position: relative;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.container .form-title .colored-prefix {
+  padding: 8px 3px 8px 10px;
+  background-color: #3f1984;
+}
+
+.container .form-title span[title="Go Back"] {
+  left: -60px;
+  position: absolute;
+  padding: 20px 16px;
+}
+
+.container .form-title span[title="Go Back"]:hover {
+  outline: 1px solid white;
+}
+
+.container .form-title span[title="Go Back"] svg {
+  fill: #fff;
+  stroke: #fff;
+  height: 18px;
+}
+
+.container .form-title span[title="Go Back"]:hover svg path {
+  fill: #fff;
+}
+
+.container .inputs {
+  border-radius: 2px;
+  width: 100%;
+}
+
+.container .inputs input {
+  border-radius: 2px;
+}
+
+.container .inputs label,
+.dob-input label {
+  /* font-size: 14px; */
+  color: #6f6f6f;
+  text-align: left;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.dob-input input {
+  border-radius: 2px;
+  width: 100%;
+  padding: 10px 10px;
+  background-color: #fff;
+  color: #555;
+}
+
+.dob-input input.error {
+}
+
+.container .modal button {
+  width: 100%;
+  padding-top: 11.5px;
+  padding-bottom: 11.5px;
+  border-radius: 5px !important;
+}
+
+.container .check-box button {
+  padding: 0px;
+}
+
+@media screen and (min-width: 1024px) {
+  .container .modal button {
+    width: auto;
+  }
+}
+
+.privacy-policy {
+  color: #cca9a9;
+}
+
+input.error {
+  outline: 2px solid red;
+}
+
+.error-message {
+  position: absolute;
+  margin-top: 3px;
+  color: red;
+  font-size: 0.8rem;
 }

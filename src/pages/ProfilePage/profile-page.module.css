@@ -1,0 +1,92 @@
+.container header {
+  background-color: #19223c;
+  color: #fff;
+  /* padding-left: 35px; */
+  /* padding-right: 35px; */
+  border-radius: 22px;
+  position: relative;
+  transition: 0.6s;
+}
+
+.profile-img {
+  position: absolute;
+  left: 40px;
+  bottom: -80px;
+}
+
+.profile-img img {
+  position: relative;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* border: 2px solid #36415f !important; */
+}
+
+.block {
+  border: 2px solid #36415f;
+  border-radius: 22px;
+}
+
+@media screen and (min-width: 768px) {
+  .block {
+    /* border: 2px solid #36415f; */
+  }
+}
+
+.detail {
+  color: #fff;
+}
+
+.detail-title {
+  color: #cca9a9;
+  width: 140px;
+}
+
+.head-text {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.block {
+  position: relative;
+  overflow: hidden;
+  transition: 0.6s;
+  /* padding: 20px; */
+  /* background: linear-gradient(
+    90.45deg,
+    rgba(31, 31, 31, 0.28) 0.45%,
+    #131313 99.67%
+  ); */
+  border-radius: 20px;
+}
+.block::before {
+  content: "";
+  display: block;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  width: 60px;
+  height: 100%;
+  top: 0;
+  filter: blur(30px);
+  transform: translateX(-250px) skewX(-15deg);
+}
+
+.block::after {
+  content: "";
+  display: block;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.2);
+  width: 30px;
+  height: 100%;
+  top: 0;
+  filter: blur(5px);
+  transform: translateX(-250px) skewX(-15deg);
+}
+
+.block:hover::before,
+.block:hover::after {
+  transform: translateX(700px) skewX(-15deg);
+  transition: 1s;
+}

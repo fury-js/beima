@@ -15,6 +15,10 @@ function Loader() {
     setTimeout(() => {
       setContainerClass(`${styles["container"]} ${styles["hide"]}`);
     }, 600);
+
+    return () => {
+      setContainerClass(`${styles["container"]} ${styles["hide"]}`);
+    };
   }, [isLoading]);
 
   return (

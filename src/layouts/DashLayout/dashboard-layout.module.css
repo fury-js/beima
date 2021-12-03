@@ -1,6 +1,7 @@
 .container {
   display: flex;
   background: #0c1228 !important;
+  min-height: 100vh;
 }
 .content-container {
   width: calc(100%);

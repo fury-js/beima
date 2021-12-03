@@ -1,0 +1,39 @@
+.container {
+  position: relative;
+}
+
+.group {
+  display: flex;
+  border-radius: 3px;
+}
+
+.container input {
+  background-color: #fff;
+  padding: 10px 10px;
+  width: 100%;
+  color: #555;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  /* min-height: 46px; */
+}
+
+.container input:focus {
+  outline: none;
+}
+
+.container.error .group {
+  outline: 1.5px solid red;
+}
+
+.error-message {
+  position: absolute;
+  margin-top: 3px;
+  color: red;
+  font-size: 0.8rem;
+}
+
+.container .prefix {
+  display: block;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}

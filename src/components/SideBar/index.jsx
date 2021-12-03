@@ -20,7 +20,12 @@ function SideBar({ isOpen, onSetOpenSideBar }) {
   })();
 
   const activeIconClass = (route) => {
-    if (activeRoute === route || activeRoute === route + "/")
+    let isBaseRoute = (r) => r === "/dashboard" || r === "/dashboard/";
+    if (isBaseRoute(route) && isBaseRoute(activeRoute)) {
+      return `${styles["icon-container"]} pl-6 xl:pl-10 ${styles["active"]}`;
+    }
+
+    if (!isBaseRoute(route) && activeRoute.includes(route))
       return `${styles["icon-container"]} pl-6 xl:pl-10 ${styles["active"]}`;
 
     return `${styles["icon-container"]} pl-6 xl:pl-10`;
@@ -62,10 +67,10 @@ function SideBar({ isOpen, onSetOpenSideBar }) {
         </li>
 
         <li className="flex mb-8">
-          <Link to="/dashboard/user">
-            <div className={activeIconClass("/dashboard/user")}>
+          <Link to="/dashboard/profile">
+            <div className={activeIconClass("/dashboard/profile")}>
               <DashUserIcon className={`${styles["icon"]}`} />
-              <span className="pl-4">User</span>
+              <span className="pl-4">Profile</span>
             </div>
           </Link>
         </li>

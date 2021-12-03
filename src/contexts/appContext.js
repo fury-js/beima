@@ -29,8 +29,8 @@ export function AppProvider({ children }) {
       const connectionStatus = await connectToMetaMask();
       if (!connectionStatus) return false;
 
-      const address = getActiveWallet();
-      console.log(address);
+      // const address = getActiveWallet();
+      // console.log(address);
 
       setIsConnected(true);
 
@@ -109,5 +109,3 @@ export function useAppContext() {
 
   return context;
 }
-
-

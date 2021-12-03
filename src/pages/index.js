@@ -1,3 +1,6 @@
 export * from "./LandingPage"
 export * from "./DashboardHome"
 export * from "./PensionsPage"
+export * from "./HistoryPage"
+export * from "./SinglePensionPage"
+export * from "./ProfilePage"

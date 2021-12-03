@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { Route } from "react-router-dom";
-import { DashboardHome, PensionsPage } from "../../pages";
+import {
+  DashboardHome,
+  HistoryPage,
+  PensionsPage,
+  SinglePensionPage,
+  ProfilePage,
+} from "../../pages";
 import { SideBar } from "../../components";
 
 import styles from "./dashboard-layout.module.css";
-import { DashHeader } from "./DashHeader";
+import { DashHeader } from "./components/DashHeader";
 import { DashboardProvider } from "../../contexts/dashboardContext";
 
 function DashboardLayout({ children, ...rest }) {
@@ -20,6 +26,21 @@ function DashboardLayout({ children, ...rest }) {
             exact
             path="/dashboard/pensions"
             render={(props) => <PensionsPage />}
+          />
+          <Route
+            exact
+            path="/dashboard/pensions/:id"
+            render={(props) => <SinglePensionPage />}
+          />
+          <Route
+            exact
+            path="/dashboard/history"
+            render={(props) => <HistoryPage />}
+          />
+          <Route
+            exact
+            path="/dashboard/profile"
+            render={(props) => <ProfilePage />}
           />
           <Route
             exact

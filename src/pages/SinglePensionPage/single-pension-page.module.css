@@ -1,0 +1,22 @@
+.container {
+  color: #fff;
+}
+
+.card-body {
+  background-color: #19223c;
+  color: #fff;
+  padding-left: 35px;
+  padding-right: 35px;
+  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.6s;
+}
+
+.detail {
+  color: #cca9a9;
+}
+
+.container span {
+  display: inline-block;
+}

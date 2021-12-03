@@ -1,5 +1,3 @@
-/** @format */
-
 let ipfsMini = require('ipfs-mini');
 
 const config = {

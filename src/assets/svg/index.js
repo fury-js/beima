@@ -10,6 +10,8 @@ import { ReactComponent as DashUserIcon } from "./dash-user.svg";
 import { ReactComponent as DashHistoryIcon } from "./history.svg";
 import { ReactComponent as MenuIcon } from "./menu.svg";
 import { ReactComponent as PlusSvg } from "./plus.svg";
+import { ReactComponent as CheckBox } from "./checkbox.svg";
+import { ReactComponent as LeftArrow } from "./arrow-left.svg";
 
 import YellowCrosses from "./yellow-cross.svg";
 import airbnbLogo from "./airbnb.svg";
@@ -28,6 +30,7 @@ import successTickSvg from "./success-tick.svg";
 import failureTickSvg from "./failure-tick.svg";
 import userSvg from "./user.svg";
 import pensionDueSvg from "./pension_due.svg";
+import greenCalenderSvg from "./green-calender.svg";
 
 export {
   BeimaLogo,
@@ -54,9 +57,12 @@ export {
   TotalBalSvg,
   userSvg,
   PlusSvg,
+  CheckBox,
   pensionDueSvg,
   DashHomeIcon,
   DashUserIcon,
   DashHistoryIcon,
   MenuIcon,
+  greenCalenderSvg,
+  LeftArrow,
 };

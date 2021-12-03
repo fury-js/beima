@@ -1,4 +1,5 @@
-const BeimaContractAddress = '0x36F3Ac5140EF8c696826FeE7F1A97374838001e1';
+const BeimaContractAddress = '0xC6f9ab81523425731A62a964A41E9EC7d292971f';
+
 
 export {
     BeimaContractAddress

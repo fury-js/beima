@@ -1,71 +1,81 @@
 /** @format */
-import { ethers } from 'ethers';
-import { getActiveWallet, hasEthereum, getBeimaContract } from './web3Service';
+import { ethers } from "ethers";
+import {
+  getActiveWallet,
+  hasEthereum,
+  getBeimaContract,
+  getCurrentNetwork,
+} from "./web3Service";
 
+export async function userIsRegistered() {
+  try {
+    if (!hasEthereum()) return false;
+    const network = await getCurrentNetwork();
+    if (network && network !== "kovan") return false;
 
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
 
-/**
- * User service function to load user details
- * @returns 
- */
-export async function getUserDetails() {
-	try {
-		if (!hasEthereum()) return false;
+    const beimaContract = await getBeimaContract(signer);
+    const address = getActiveWallet();
 
-		const provider = new ethers.providers.Web3Provider(window.ethereum);
-		const signer = provider.getSigner();
-
-		const beimaContract = await getBeimaContract(signer);
-		const address = getActiveWallet();
-
-		const userRegisterd = await beimaContract.isRegisterd(address);
-		if (!userRegisterd) return null;
-
-		let user = await beimaContract.pensionServiceApplicant(address);
-
-		return user;
-	} catch (err) {
-		console.log('User is Not registered', err);
-	}
+    return await beimaContract.isRegistered(address);
+  } catch (err) {
+    console.log("Something went wrong", err);
+  }
 }
 
-/**
- * User service function to register user
- * @param {*} id 
- * @param {*} asset 
- * @param {*} userIpfsDetails 
- * @param {*} amountToSpend 
- * @param {*} lockPeriodInDays 
- */
-export async function registerUser(
-	id,
-	asset,
-	userIpfsDetails,
-	amountToSpend,
-	lockPeriodInDays,
-) {
-	try {
-		const provider = new ethers.providers.Web3Provider(window.ethereum);
-		const signer = provider.getSigner();
+export async function registerUser(userIpfs, onRegister, onError) {
+  try {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
 
-		const beimaContract = await getBeimaContract(signer);
-		// const address = getActiveWallet();
+    const beimaContract = await getBeimaContract(signer);
+    await beimaContract.register(userIpfs);
 
-		let result = await beimaContract.register(
-			id,
-			asset,
-			userIpfsDetails,
-			amountToSpend,
-			lockPeriodInDays,
-		);
+    await beimaContract.on("Register", onRegister);
+  } catch (err) {
+    console.log("Something went wrong", err);
+    onError();
+  }
+}
 
-		console.log(result);
+export async function getUserDetails() {
+  try {
+    if (!hasEthereum()) return false;
 
-		await beimaContract.on('Register', () => {
-			// do something
-			console.log('do something');
-		});
-	} catch (err) {
-		console.log('user registration failed', err);
-	}
+    // if (!isRegistered) return false;
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+
+    const beimaContract = await getBeimaContract(signer);
+    const address = getActiveWallet();
+
+    const details = await beimaContract.pensionServiceApplicant(address);
+    const hasPlan = details.client.hasPlan;
+    const user = await fetch(
+      `https://ipfs.io/ipfs/${details.userDetails}`
+    ).then((r) => r.json());
+
+    if (!hasPlan) return { user, pension: null };
+
+    const pensionInfo = await fetch(
+      `https://ipfs.io/ipfs/${details.client.ipfsHashOfUserPensionDetails}`
+    ).then((r) => r.json());
+
+    const monthlyDeposit = details.client.amountToSpend.toString();
+    const totalDeposit = details.client.depositedAmount.toString();
+
+    const pension = {
+      ...pensionInfo,
+      monthlyDeposit,
+      totalDeposit,
+    };
+
+    console.log({ user, pension });
+
+    return { user, pension };
+  } catch (err) {
+    console.log("Something went wordSpacing: ", err);
+  }
 }

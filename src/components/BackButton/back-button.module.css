@@ -1,0 +1,17 @@
+.container {
+}
+
+.container a {
+  display: inline-block;
+}
+
+.container svg {
+  fill: #fff;
+  stroke: #fff;
+  height: 18px;
+}
+
+.container a:hover .svg-body svg path {
+  fill: #fff;
+  /* outline: 1px solid #fff; */
+}

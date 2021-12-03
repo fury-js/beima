@@ -1,7 +1,7 @@
 .container {
   position: fixed;
   width: 100%;
-  top: -120px;
+  top: -140px;
   perspective: 100px;
   perspective-origin: left;
   left: calc(0px);
@@ -10,7 +10,7 @@
   clip: auto;
   transition: top 0.3s ease-in;
   color: #fff;
-  z-index: var(--modal-z-index);
+  z-index: var(--toast-z-index);
   box-shadow: 4px 5px 13px 0px rgba(0, 0, 0, 0.35);
 }
 
