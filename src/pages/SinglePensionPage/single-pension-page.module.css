@@ -20,3 +20,7 @@
 .container span {
   display: inline-block;
 }
+
+.img-div img {
+  max-height: 200px;
+}

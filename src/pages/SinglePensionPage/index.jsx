@@ -29,32 +29,37 @@ function SinglePensionPage(props) {
       {pensions.length > 0 && (
         <div className={` py-4`}>
           <div
-            className={`flex p-4 gap-x-5 items-center ${styles["card-body"]} mb-6`}
+            className={`grid grid-rows-2 grid-cols-11 gap-4 lg:gap-0 p-4 items-center ${styles["card-body"]} mb-6`}
           >
-            <div>
+            <div
+              className={`col-span-2 xl:col-span-1 sm:row-span-2 ${styles["img-div"]} xl:pr-4`}
+            >
               <img src={barchartImage} alt="" />
             </div>
-            <div className="w-full">
-              <div className="flex flex-wrap justify-between">
-                <div>
-                  <div>
-                    <span>{details.name} Plan</span>
-                  </div>
-                  <div className="">
-                    <span className="pr-3 mb-1">Interest: </span>
-                    <span className={`${styles["detail"]} mb-1`}>
-                      {getInterest(details.interest)}
-                    </span>
-                  </div>
-                </div>
-                <Button
-                  text="Withdraw"
-                  onClick={() =>
-                    toast.success("You have successfully withdrawn your funds")
-                  }
-                />
+            <div className="flex flex-col justify-center col-span-9 sm:col-span-5 lg:col-span-6 xl:col-span-7 sm:row-span-2">
+              <div>
+                <span>{details.name} Plan</span>
+              </div>
+              <div className="">
+                <span className="pr-3 mb-1">Interest: </span>
+                <span className={`${styles["detail"]} mb-1`}>
+                  {getInterest(details.interest)}
+                </span>
               </div>
             </div>
+            <div className="flex flex-col justify-center col-span-11 sm:col-span-4 lg:col-span-3 sm:row-span-2">
+              <Button
+                className="col-span-3"
+                text="Withdraw"
+                onClick={() =>
+                  toast.success("You have successfully withdrawn your funds")
+                }
+              />
+            </div>
+
+            {/* <div className="w-full">
+              <div className="flex flex-wrap justify-between"></div>
+            </div> */}
           </div>
           <div className="grid grid-cols-6 gap-4 mb-6">
             <div className="col-span-6 md:col-span-3 xl:col-span-2">
