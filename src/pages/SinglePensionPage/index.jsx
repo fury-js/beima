@@ -24,7 +24,7 @@ function SinglePensionPage(props) {
   const details = pensions?.[id - 1];
   if (!details) history.push("/dashboard/pensions");
   return (
-    <div className={`${styles["container"]} container`}>
+    <main className={`${styles["container"]} container pb-20`}>
       <BackButton to="/dashboard/pensions" />
       {pensions.length > 0 && (
         <div className={` py-4`}>
@@ -105,7 +105,7 @@ function SinglePensionPage(props) {
           </div>
         </div>
       )}
-    </div>
+    </main>
   );
 }
 
