@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { greenCalenderSvg } from "../../../../assets/svg";
 import styles from "./lock-time-input.module.css";
 
