@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./sideBar.module.css";
 
-import { Link, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { CloseButton } from "../../components";
 
 import {
@@ -12,6 +12,7 @@ import {
 } from "../../assets/svg";
 
 function SideBar({ isOpen, onSetOpenSideBar }) {
+  const history = useHistory();
   const activeRoute = useLocation().pathname;
 
   const containerClass = (() => {
@@ -30,6 +31,12 @@ function SideBar({ isOpen, onSetOpenSideBar }) {
 
     return `${styles["icon-container"]} pl-6 xl:pl-10`;
   };
+
+  useEffect(() => {
+    history.listen((location, action) => {
+      onSetOpenSideBar(false);
+    });
+  }, [history, onSetOpenSideBar]);
 
   return (
     <div className={containerClass}>
