@@ -108,7 +108,7 @@ function FlexiblePlanForm({ isOpen, onClose }) {
           <div className={`${styles["bg-img"]} hidden lg:block`}>
             <img src={barchartNShadowImage} alt="" />
           </div>
-          <div className={`${styles["modal-content"]} pb-20`}>
+          <div className={`${styles["modal-content"]} pb-16`}>
             <div className={`mb-10 ${styles["form-title"]}`}>
               <div className="flex flex-wrap lg:block gap-x-2">
                 <div className="lg:hidden">
@@ -139,7 +139,7 @@ function FlexiblePlanForm({ isOpen, onClose }) {
                 label="Number of Months (1month = 30days)"
                 className={`${styles["inputs"]} mb-8`}
               />
-              <div className="lg:flex justify-between items-center">
+              <div className="lg:flex flex-wrap justify-between items-center">
                 <div className="flex mb-5 lg:mb-0 pr-4">
                   <div className="pr-4">
                     <CheckboxInput
@@ -147,7 +147,7 @@ function FlexiblePlanForm({ isOpen, onClose }) {
                       onToggle={() => setPrivacyIsChecked(!privacyIsChecked)}
                     />
                   </div>
-                  <div className="text-sm">
+                  <div className="text-sm mb-3">
                     <span>I agree to all statements included in the </span>
                     <span className={`${styles["privacy-policy"]}`}>
                       Privacy Policy
@@ -156,8 +156,8 @@ function FlexiblePlanForm({ isOpen, onClose }) {
                 </div>
                 <Button
                   type="submit"
-                  className="ml-auto w-full lg:w-auto"
-                  text="NEXT"
+                  className="ml-auto w-full lg:w-auto mt-1"
+                  text="APPROVE"
                 />
               </div>
             </form>

@@ -13,7 +13,7 @@ function LockTimeInput({
 }) {
   const error = formik?.touched[name] && formik?.errors?.[name];
   const value = formik?.values?.["lockTime"]
-  let classes = `${styles.container} ${className} mb-10 `;
+  let classes = `${styles.container} ${className} `;
   if (error) classes += styles["error"];
 
   if (formik) {
