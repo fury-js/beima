@@ -16,12 +16,13 @@ import { Link } from "react-router-dom";
 import { formatMoney } from "../../utils";
 
 const getInterest = (interest) => {
-  if (interest.currency === "$")
-    return `${interest.currency}${interest.amount}`;
+  if (interest?.currency === "$")
+    return `${interest?.currency}${interest?.amount}`;
 
-  return `${interest.amount} ${interest.currency}`;
+  return `${interest?.amount} ${interest?.currency}`;
 };
 
+const nullInterest = { amount: 0, currency: "XEND" };
 
 function DashboardHome() {
   const { isRegistered, pensions } = useDashboardContext();
@@ -37,7 +38,7 @@ function DashboardHome() {
             <BalanceCard
               type="totalBal"
               headText="Total balance"
-              amount={formatMoney(pensions[0].totalDeposit)}
+              amount={formatMoney(pensions[0]?.totalDeposit || 0)}
               Icon={TotalBalSvg}
             />
           </div>
@@ -45,7 +46,7 @@ function DashboardHome() {
             <BalanceCard
               type="outline"
               headText="Pension balance"
-              amount={formatMoney(pensions[0].totalDeposit)}
+              amount={formatMoney(pensions[0]?.totalDeposit || 0)}
               Icon={PensionSvg}
             />
           </div>
@@ -53,7 +54,7 @@ function DashboardHome() {
             <BalanceCard
               type="outline"
               headText="Total interest"
-              amount={getInterest(pensions[0].interest)}
+              amount={getInterest(pensions[0]?.interest || nullInterest)}
               Icon={TotalSvg}
             />
           </div>
@@ -74,7 +75,7 @@ function DashboardHome() {
           <h5>Pension Due</h5>
           <p className="my-3">
             Your closest accured pension will be due by{" "}
-            <span>{pensions[0].maturityDate}</span>
+            <span>{pensions[0]?.maturityDate}</span>
           </p>
           <div className="flex justify-start xl:justify-end ">
             <Link to="/dashboard/pensions">View</Link>

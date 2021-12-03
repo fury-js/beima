@@ -43,8 +43,9 @@ export async function registerUser(userIpfs, onRegister, onError) {
 export async function getUserDetails() {
   try {
     if (!hasEthereum()) return false;
+    const isRegistered = await userIsRegistered();
 
-    // if (!isRegistered) return false;
+    if (!isRegistered) return { user: null, pension: null };
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
 

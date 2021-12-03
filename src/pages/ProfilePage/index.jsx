@@ -3,15 +3,25 @@ import { logoImage } from "../../assets/images";
 import { useDashboardContext } from "../../contexts/dashboardContext";
 import { useLoadingContext } from "../../contexts/loadingContext";
 import styles from "./profile-page.module.css";
+import { useHistory } from "react-router";
+import { useToastContext } from "../../contexts/toastContext";
 
 function ProfilePage(props) {
-  const { user } = useDashboardContext();
+  const history = useHistory();
+  const { toast } = useToastContext();
+  const { user, isRegistered } = useDashboardContext();
   const { setIsLoading } = useLoadingContext();
 
   useEffect(() => {
-    if (!user) return setIsLoading(true);
+    if (!user) setIsLoading(true);
+    if (!isRegistered) {
+      toast.error("You have not registered");
+      setTimeout(() => {
+        history.push("/dashboard");
+      }, 3000);
+    }
     if (user) return setIsLoading(false);
-  }, [user, setIsLoading]);
+  }, [user, setIsLoading, isRegistered, history]);
 
   if (!user) return <div></div>;
   return (

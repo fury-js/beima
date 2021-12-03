@@ -22,6 +22,9 @@ function HistoryPage(props) {
           })}
         </div>
       )}
+      {!hasPensions && (
+        <div className="text-white">You have not added any pension plans.</div>
+      )}
     </div>
   );
 }
