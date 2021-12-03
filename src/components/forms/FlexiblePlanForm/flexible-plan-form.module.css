@@ -89,7 +89,7 @@
   width: 90%;
 }
 
-.container .modal button {
+.container .modal button[type="submit"] {
   width: 100%;
   border-radius: 5px !important;
 }

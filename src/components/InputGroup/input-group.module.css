@@ -12,6 +12,8 @@
   padding: 10px 10px;
   width: 100%;
   color: #555;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   /* min-height: 46px; */

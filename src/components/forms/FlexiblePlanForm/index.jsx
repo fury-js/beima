@@ -9,7 +9,7 @@ import {
 } from "../../../assets/images";
 import { InputGroup } from "../../InputGroup";
 import LockTimeInput from "../components/LockTimeInput";
-import { Button, CheckboxInput } from "../../index";
+import { Button, CheckboxInput, CloseButton } from "../../index";
 import { useDashboardContext } from "../../../contexts/dashboardContext";
 import { useToastContext } from "../../../contexts/toastContext";
 import { createFlexiblePlan } from "../../../services/pensionService";
@@ -98,18 +98,19 @@ function FlexiblePlanForm({ isOpen, onClose }) {
 
   return (
     <div className={`${styles["container"]}`} onClick={onClose}>
-      <div className="container">
+      <div className="">
         <div
           onClick={(e) => e.stopPropagation()}
           className={`${styles["modal"]} text-white rounded`}
           style={{ backgroundImage: `url(${formsBgImage})` }}
         >
+          <CloseButton onClick={onClose} />
           <div className={`${styles["bg-img"]} hidden lg:block`}>
             <img src={barchartNShadowImage} alt="" />
           </div>
           <div className={`${styles["modal-content"]} pb-20`}>
             <div className={`mb-10 ${styles["form-title"]}`}>
-              <div className="flex lg:block gap-x-2">
+              <div className="flex flex-wrap lg:block gap-x-2">
                 <div className="lg:hidden">
                   <img src={barchartImage} alt="" />
                 </div>

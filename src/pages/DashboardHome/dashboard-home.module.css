@@ -38,7 +38,12 @@
   position: relative;
   display: flex;
   justify-content: flex-end;
-  max-width: 300px;
+}
+
+@media screen and (min-width: 768px) {
+  .dueCard {
+    max-width: 300px;
+  } 
 }
 
 .dueCard img {
