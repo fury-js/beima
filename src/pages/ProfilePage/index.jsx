@@ -21,6 +21,7 @@ function ProfilePage(props) {
       }, 3000);
     }
     if (user) return setIsLoading(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, setIsLoading, isRegistered, history]);
 
   if (!user) return <div></div>;
