@@ -8,11 +8,20 @@ import {
 } from "../../../../assets/images";
 
 import { FlexiblePlanForm } from "../../../../components";
+import { useDashboardContext } from "../../../../contexts/dashboardContext";
+import { useToastContext } from "../../../../contexts/toastContext";
 import { PensionsCard } from "../PensionsCard";
 import styles from "./pension-plans.module.css";
 
 function PensionPlans(props) {
+  const { pensions } = useDashboardContext();
+  const { toast } = useToastContext();
   const [activePlan, setActivePlan] = useState(null);
+  const activatePlan = (plan) => {
+    if (pensions.length)
+      return toast.error("You have already setup a pension plan");
+    setActivePlan(plan);
+  };
   const plans = {
     flexible: (
       <FlexiblePlanForm
@@ -27,7 +36,7 @@ function PensionPlans(props) {
       <div className="grid grid-cols-4 gap-4">
         <div
           className="col-span-4 md:col-span-2 lg:col-span-1"
-          onClick={() => setActivePlan("flexible")}
+          onClick={() => activatePlan("flexible")}
         >
           <PensionsCard
             Icon={barchartImage}
