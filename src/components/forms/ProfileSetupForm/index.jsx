@@ -10,8 +10,6 @@ import { Button, CheckboxInput } from "../../index";
 import { Input } from "../../Input";
 import { ipfsMini } from "../../../services/ipfs";
 import { registerUser } from "../../../services/userService";
-import { useToastContext } from "../../../contexts/toastContext";
-import { useLoadingContext } from "../../../contexts/loadingContext";
 import { useDashboardContext } from "../../../contexts/dashboardContext";
 
 const validationSchema = Yup.object({
@@ -39,8 +37,6 @@ const initialValues = {
 };
 
 function ProfileSetupForm() {
-  const { toast } = useToastContext();
-  const { setIsLoading } = useLoadingContext();
   const { setIsRegistered, setUser } = useDashboardContext();
   const currentYear = new Date().getFullYear();
 
@@ -55,7 +51,6 @@ function ProfileSetupForm() {
 
   const handleSubmit = (values) => {
     (async () => {
-      setIsLoading(true);
       const user = {
         firstName: values.firstName,
         lastName: values.lastName,
@@ -72,18 +67,11 @@ function ProfileSetupForm() {
       const userIpfsHash = await ipfsMini.addJSON(user);
 
       const onRegister = () => {
-        setIsLoading(false);
         setIsRegistered(true);
-        toast.success("Registration was successful");
         setUser(user);
       };
 
-      const onError = () => {
-        setIsLoading(false);
-        toast.error("Something went wrong, please try again later.");
-      };
-
-      await registerUser(userIpfsHash, onRegister, onError);
+      await registerUser(userIpfsHash, onRegister);
     })();
   };
 

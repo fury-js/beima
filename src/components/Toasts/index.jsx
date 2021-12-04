@@ -1,12 +1,20 @@
-import { useToastContext } from "../../contexts/toastContext";
 import styles from "./toasts.module.css";
-import { useEffect } from "react";
-import { failureTickSvg, greenBubblesSvg, redBubblesSvg, successTickSvg } from "../../assets/svg";
+import { useEffect, useState } from "react";
+import {
+  failureTickSvg,
+  greenBubblesSvg,
+  redBubblesSvg,
+  successTickSvg,
+} from "../../assets/svg";
 import { CloseButton } from "..";
+import Emitter from "../../services/emitter";
 
 function Toast() {
-  const { toastType, toastMessage, isDisplayingToast, setIsDisplayingToast } =
-    useToastContext();
+  const [isDisplayingToast, setIsDisplayingToast] = useState(false);
+  const [toastConfig, setToastConfig] = useState({
+    type: "success",
+    message: "hello",
+  });
 
   const bgImages = {
     success: greenBubblesSvg,
@@ -18,11 +26,27 @@ function Toast() {
     error: failureTickSvg,
   };
 
+  useEffect(() => {
+    Emitter.on("TOAST", ({ type, message }) => {
+      setIsDisplayingToast(true);
+      setToastConfig({ type, message });
+    });
+
+    return () => {
+      Emitter.off("TOAST", () => {
+        setIsDisplayingToast(false);
+        setToastConfig({ type: "success", message: "hello" });
+      });
+    };
+  });
+
   const containerClass = (() => {
     if (!isDisplayingToast)
-      return `${styles["container"]} ${styles[toastType]}`;
+      return `${styles["container"]} ${styles[toastConfig.type]}`;
 
-    return `${styles["container"]} ${styles[toastType]} ${styles["active"]}`;
+    return `${styles["container"]} ${styles[toastConfig.type]} ${
+      styles["active"]
+    }`;
   })();
 
   useEffect(() => {
@@ -38,14 +62,14 @@ function Toast() {
       <CloseButton onClick={() => setIsDisplayingToast(false)} />
       <div className="grid grid-cols-6">
         <div className={`${styles["tick-img"]} col-span-1`}>
-          <img src={ticks[toastType]} alt="" />
+          <img src={ticks[toastConfig.type]} alt="" />
         </div>
         <div className={`${styles["bg-img"]} col-span-1`}>
-          <img src={bgImages[toastType]} alt="" />
+          <img src={bgImages[toastConfig.type]} alt="" />
         </div>
         <div className={`${styles["content"]} col-span-5`}>
-          <p className={`${styles["heading"]} mb-2`}>{toastType}</p>
-          <p className={`${styles["message"]}`}>{toastMessage}</p>
+          <p className={`${styles["heading"]} mb-2`}>{toastConfig.type}</p>
+          <p className={`${styles["message"]}`}>{toastConfig.message}</p>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getUserDetails, userIsRegistered } from "../services/userService";
 import { getCurrentNetwork, getBeimaContract } from "../services/web3Service";
-import { useToastContext } from "./toastContext";
+import toast from "../utils/toastConfig";
 
 const DashboardContext = createContext();
 
@@ -15,7 +15,6 @@ const coinAssets = [
 // const history = [...initPensions];
 
 export function DashboardProvider({ children }) {
-  const { toast } = useToastContext();
   const [pensions, setPensions] = useState([]);
   const [user, setUser] = useState(null);
   const [coins] = useState(coinAssets);

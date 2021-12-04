@@ -1,5 +1,7 @@
 /** @format */
 import { ethers } from "ethers";
+import toast from "../utils/toastConfig";
+import Emitter from "./emitter";
 import {
   getActiveWallet,
   hasEthereum,
@@ -25,18 +27,26 @@ export async function userIsRegistered() {
   }
 }
 
-export async function registerUser(userIpfs, onRegister, onError) {
+export async function registerUser(userIpfs, onRegister) {
   try {
+    Emitter.emit("OPEN_LOADER");
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
 
     const beimaContract = await getBeimaContract(signer);
     await beimaContract.register(userIpfs);
 
-    await beimaContract.on("Register", onRegister);
+    await beimaContract.on("Register", () => {
+      onRegister();
+      Emitter.emit("CLOSE_LOADER");
+      toast.success("Registration was successful");
+    });
   } catch (err) {
-    console.log("Something went wrong", err);
-    onError();
+    let msg = "Something went wrong, please try again later.";
+    console.log(msg, err);
+    if (err.code === 4001) msg = "This transaction was denied by you";
+    Emitter.emit("CLOSE_LOADER");
+    toast.error(msg);
   }
 }
 

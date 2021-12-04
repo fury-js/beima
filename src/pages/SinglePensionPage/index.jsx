@@ -5,8 +5,8 @@ import { PensionSvg, TotalBalSvg, TotalSvg } from "../../assets/svg";
 import { BalanceCard, Button } from "../../components";
 import BackButton from "../../components/BackButton";
 import { useDashboardContext } from "../../contexts/dashboardContext";
-import { useToastContext } from "../../contexts/toastContext";
 import { formatMoney } from "../../utils";
+import toast from "../../utils/toastConfig";
 import styles from "./single-pension-page.module.css";
 
 const getInterest = (interest) => {
@@ -19,7 +19,6 @@ const getInterest = (interest) => {
 function SinglePensionPage(props) {
   const history = useHistory();
   const { pensions } = useDashboardContext();
-  const { toast } = useToastContext();
   const { id } = useParams();
   const details = pensions?.[id - 1];
   if (!details) history.push("/dashboard/pensions");
@@ -56,10 +55,6 @@ function SinglePensionPage(props) {
                 }
               />
             </div>
-
-            {/* <div className="w-full">
-              <div className="flex flex-wrap justify-between"></div>
-            </div> */}
           </div>
           <div className="grid grid-cols-6 gap-4 mb-6">
             <div className="col-span-6 md:col-span-3 xl:col-span-2">

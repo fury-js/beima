@@ -9,13 +9,12 @@ import {
 
 import { FlexiblePlanForm } from "../../../../components";
 import { useDashboardContext } from "../../../../contexts/dashboardContext";
-import { useToastContext } from "../../../../contexts/toastContext";
+import toast from "../../../../utils/toastConfig";
 import { PensionsCard } from "../PensionsCard";
 import styles from "./pension-plans.module.css";
 
 function PensionPlans(props) {
   const { pensions } = useDashboardContext();
-  const { toast } = useToastContext();
   const [activePlan, setActivePlan] = useState(null);
   const activatePlan = (plan) => {
     if (pensions.length)

@@ -11,10 +11,8 @@ import { InputGroup } from "../../InputGroup";
 import LockTimeInput from "../components/LockTimeInput";
 import { Button, CheckboxInput, CloseButton } from "../../index";
 import { useDashboardContext } from "../../../contexts/dashboardContext";
-import { useToastContext } from "../../../contexts/toastContext";
 import { createFlexiblePlan } from "../../../services/pensionService";
 import { ipfsMini } from "../../../services/ipfs";
-import { useLoadingContext } from "../../../contexts/loadingContext";
 
 const validationSchema = Yup.object({
   deposit: Yup.number().required("An Amount in USDT is required"),
@@ -31,8 +29,6 @@ const initialValues = {
 const today = new Date().toLocaleDateString();
 
 function FlexiblePlanForm({ isOpen, onClose }) {
-  const { toast } = useToastContext();
-  const { setIsLoading } = useLoadingContext();
   const { addNewPensionPlan, coins } = useDashboardContext();
   const [privacyIsChecked, setPrivacyIsChecked] = useState(false);
 
@@ -62,20 +58,15 @@ function FlexiblePlanForm({ isOpen, onClose }) {
     };
     const coin = coins.find((coin) => coin.name === "USDT").address;
     (async () => {
-      setIsLoading(true);
       const planIpfsHash = await ipfsMini.addJSON({ ...plan });
 
       const onAddPlan = () => {
         addNewPensionPlan(plan);
-        setIsLoading(false);
-        toast.success("A new Flexible Pension Plan was setup successfully");
         onClose();
       };
 
-      const onError = (errorMsg) => {
-        setIsLoading(false);
+      const onError = () => {
         onClose();
-        toast.error(errorMsg)
       };
 
       await createFlexiblePlan(
@@ -87,7 +78,6 @@ function FlexiblePlanForm({ isOpen, onClose }) {
         onAddPlan,
         onError
       );
-      console.log('thtera')
     })();
   };
 

@@ -1,28 +1,26 @@
 import React, { useEffect } from "react";
 import { logoImage } from "../../assets/images";
 import { useDashboardContext } from "../../contexts/dashboardContext";
-import { useLoadingContext } from "../../contexts/loadingContext";
 import styles from "./profile-page.module.css";
 import { useHistory } from "react-router";
-import { useToastContext } from "../../contexts/toastContext";
+import toast from "../../utils/toastConfig";
+import Emitter from "../../services/emitter";
 
 function ProfilePage(props) {
   const history = useHistory();
-  const { toast } = useToastContext();
   const { user, isRegistered } = useDashboardContext();
-  const { setIsLoading } = useLoadingContext();
 
   useEffect(() => {
-    if (!user) setIsLoading(true);
+    Emitter.emit("OPEN_LOADER");
     if (!isRegistered) {
       toast.error("You have not registered");
       setTimeout(() => {
         history.push("/dashboard");
       }, 3000);
     }
-    if (user) return setIsLoading(false);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user, setIsLoading, isRegistered, history]);
+    if (user) return Emitter.emit("CLOSE_LOADER");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, isRegistered, history]);
 
   if (!user) return <div></div>;
   return (

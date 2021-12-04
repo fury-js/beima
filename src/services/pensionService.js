@@ -1,5 +1,7 @@
 /** @format */
 import { ethers } from "ethers";
+import toast from "../utils/toastConfig";
+import Emitter from "./emitter";
 import {
   getActiveWallet,
   hasEthereum,
@@ -16,6 +18,7 @@ export async function createFlexiblePlan(
   onAddPlan,
   onError
 ) {
+  Emitter.emit("OPEN_LOADER");
   const timeDurationOfDeposit = lockTime;
   try {
     if (!hasEthereum()) return false;
@@ -35,11 +38,17 @@ export async function createFlexiblePlan(
       lockTime
     );
 
-    await beimaContract.on("Plan", onAddPlan);
+    await beimaContract.on("Plan", () => {
+      onAddPlan();
+      toast.success("A new Flexible Pension Plan was setup successfully");
+      Emitter.emit("CLOSE_LOADER");
+    });
   } catch (err) {
     console.log("Something went wrong", err);
     let msg = "Something went wrong, please try again later.";
     if (err.code === 4001) msg = "This transaction was denied by you";
-    onError(msg);
+    Emitter.emit("CLOSE_LOADER");
+    toast.error(msg);
+    onError();
   }
 }

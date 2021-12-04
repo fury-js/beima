@@ -8,6 +8,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "ethers": "^5.5.1",
+    "eventemitter3": "^4.0.7",
     "formik": "^2.2.9",
     "ipfs-mini": "^1.1.5",
     "react": "^17.0.2",
