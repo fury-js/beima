@@ -3,7 +3,6 @@ import { ethers } from "ethers";
 import toast from "../utils/toastConfig";
 import Emitter from "./emitter";
 import {
-  getActiveWallet,
   hasEthereum,
   getBeimaContract,
   getCurrentNetwork,
