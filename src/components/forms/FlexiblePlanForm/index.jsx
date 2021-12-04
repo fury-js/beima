@@ -72,10 +72,10 @@ function FlexiblePlanForm({ isOpen, onClose }) {
         onClose();
       };
 
-      const onError = () => {
+      const onError = (errorMsg) => {
         setIsLoading(false);
-        toast.error("Something went wrong, please try again later.");
         onClose();
+        toast.error(errorMsg)
       };
 
       await createFlexiblePlan(
@@ -87,6 +87,7 @@ function FlexiblePlanForm({ isOpen, onClose }) {
         onAddPlan,
         onError
       );
+      console.log('thtera')
     })();
   };
 

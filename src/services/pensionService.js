@@ -20,14 +20,11 @@ export async function createFlexiblePlan(
   try {
     if (!hasEthereum()) return false;
     const network = await getCurrentNetwork();
-    if (network && !network.includes("Kovan")) return false;
-
+    if (network && !network.includes("kovan")) return false;
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
 
     const beimaContract = await getBeimaContract(signer);
-    const address = getActiveWallet();
-    console.log(address);
 
     await beimaContract.setPlan(
       coin,
@@ -41,6 +38,8 @@ export async function createFlexiblePlan(
     await beimaContract.on("Plan", onAddPlan);
   } catch (err) {
     console.log("Something went wrong", err);
-    onError();
+    let msg = "Something went wrong, please try again later.";
+    if (err.code === 4001) msg = "This transaction was denied by you";
+    onError(msg);
   }
 }
