@@ -6,7 +6,8 @@ import toast from "../utils/toastConfig";
 const DashboardContext = createContext();
 
 const coinAssets = [
-  { name: "USDT", address: "0x3f0A0EA2f86baE6362CF9799B523BA06647Da018" },
+  { name: "cUSDT", address: "0x3f0A0EA2f86baE6362CF9799B523BA06647Da018" },
+  { name: "USDT", address: "0x07de306FF27a2B630B1141956844eB1552B956B5" },
   { name: "USDC", address: "" },
   { name: "ETH", address: "" },
   { name: "TUSD", address: "" },
@@ -48,6 +49,7 @@ export function DashboardProvider({ children }) {
       value={{
         isRegistered,
         setIsRegistered,
+        setUser,
         pensions,
         addNewPensionPlan,
         coins,

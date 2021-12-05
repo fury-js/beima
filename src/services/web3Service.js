@@ -1,8 +1,8 @@
 /** @format */
 
 import { ethers } from "ethers";
-import { BeimaAbi } from "../contracts/abis";
-import { BeimaContractAddress } from "../utils";
+import { BeimaAbi, KovanUSDTAbi } from "../contracts/abis";
+import { BeimaContractAddress, KovanUSDTContractAddress } from "../utils";
 
 /**
  * Web3 Service function to create connection to Metamask
@@ -83,6 +83,16 @@ export async function getBeimaContract(signer) {
     if (!hasEthereum()) return false;
 
     return new ethers.Contract(BeimaContractAddress, BeimaAbi.abi, signer);
+  } catch (err) {
+    console.log("failed to load contract", err);
+  }
+}
+
+export async function getKovanUSDTContract(signer) {
+  try {
+    if (!hasEthereum()) return false;
+
+    return new ethers.Contract(KovanUSDTContractAddress, KovanUSDTAbi, signer);
   } catch (err) {
     console.log("failed to load contract", err);
   }

@@ -1,6 +1,4 @@
-const BeimaContractAddress = '0xC6f9ab81523425731A62a964A41E9EC7d292971f';
+const BeimaContractAddress = "0x23858F1390a73F770D3D68420A3cf79bd800DE26";
+const KovanUSDTContractAddress = "0x07de306FF27a2B630B1141956844eB1552B956B5";
 
-
-export {
-    BeimaContractAddress
-}
+export { BeimaContractAddress, KovanUSDTContractAddress };
