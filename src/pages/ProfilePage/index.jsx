@@ -19,6 +19,7 @@ function ProfilePage(props) {
       }, 3000);
     }
     if (user) return Emitter.emit("CLOSE_LOADER");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, isRegistered, history]);
 
   if (!user) return <div></div>;

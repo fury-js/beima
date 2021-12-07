@@ -41,6 +41,7 @@ export function DashboardProvider({ children }) {
       setIsRegistered(registerStatus);
       console.log(beima);
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setIsRegistered]);
 
   return (
