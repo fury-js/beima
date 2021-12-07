@@ -1,14 +1,9 @@
-/** @format */
+import Web3 from "web3";
 
 import { ethers } from "ethers";
 import { BeimaAbi, KovanUSDTAbi } from "../contracts/abis";
 import { BeimaContractAddress, KovanUSDTContractAddress } from "../utils";
 
-/**
- * Web3 Service function to create connection to Metamask
- * @param {*} setError
- * @returns
- */
 export const connectToMetaMask = async (setError) => {
   try {
     if (!hasEthereum()) return false;
@@ -23,10 +18,6 @@ export const connectToMetaMask = async (setError) => {
   }
 };
 
-/**
- * Web3 Service function to get current active wallet
- * @returns
- */
 export function getActiveWallet() {
   if (!hasEthereum()) return false;
   const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -35,10 +26,6 @@ export function getActiveWallet() {
   return address;
 }
 
-/**
- * Web3 Service function to check if user has any ETH handler for eg. Metamask installed
- * @returns
- */
 export function hasEthereum() {
   return window.ethereum ? true : false;
 }
@@ -88,11 +75,34 @@ export async function getBeimaContract(signer) {
   }
 }
 
+export async function getWeb3BeimaContract() {
+  try {
+    if (!hasEthereum()) return false;
+    const web3 = new Web3(Web3.givenProvider)
+
+    return new web3.eth.Contract(BeimaAbi.abi, BeimaContractAddress)
+
+  } catch (err) {
+    console.log("failed to load contract", err);
+  }
+}
+
 export async function getKovanUSDTContract(signer) {
   try {
     if (!hasEthereum()) return false;
 
     return new ethers.Contract(KovanUSDTContractAddress, KovanUSDTAbi, signer);
+  } catch (err) {
+    console.log("failed to load contract", err);
+  }
+}
+
+export async function getWeb3KovanUSDTContract() {
+  try {
+    if (!hasEthereum()) return false;
+    const web3 = new Web3(Web3.givenProvider)
+
+    return new web3.eth.Contract(KovanUSDTAbi, KovanUSDTContractAddress)
   } catch (err) {
     console.log("failed to load contract", err);
   }

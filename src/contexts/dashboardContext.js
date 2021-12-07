@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { depositAsset, genAddresses } from "../services/pensionService";
 import { getUserDetails, userIsRegistered } from "../services/userService";
 import { getCurrentNetwork, getBeimaContract } from "../services/web3Service";
 import toast from "../utils/toastConfig";
@@ -8,7 +9,7 @@ const DashboardContext = createContext();
 const coinAssets = [
   { name: "cUSDT", address: "0x3f0A0EA2f86baE6362CF9799B523BA06647Da018" },
   { name: "USDT", address: "0x07de306FF27a2B630B1141956844eB1552B956B5" },
-  { name: "USDC", address: "" },
+  { name: "USDC", address: "0xb7a4F3E9097C08dA09517b5aB877F7a917224ede" },
   { name: "ETH", address: "" },
   { name: "TUSD", address: "" },
 ];
@@ -32,6 +33,7 @@ export function DashboardProvider({ children }) {
       if (network && network !== "kovan") {
         return toast.error("Please Switch to the Kovan Test Network");
       }
+      // genAddresses()
       const beima = await getBeimaContract();
       const registerStatus = await userIsRegistered();
       const data = await getUserDetails();
