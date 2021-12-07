@@ -1,14 +1,9 @@
-/** @format */
+import Web3 from "web3";
 
 import { ethers } from "ethers";
-import { BeimaAbi } from "../contracts/abis";
-import { BeimaContractAddress } from "../utils";
+import { BeimaAbi, RinkebyUSDTAbi } from "../contracts/abis";
+import { BeimaContractAddress, RinkebyUSDTContractAddress } from "../utils";
 
-/**
- * Web3 Service function to create connection to Metamask
- * @param {*} setError
- * @returns
- */
 export const connectToMetaMask = async (setError) => {
   try {
     if (!hasEthereum()) return false;
@@ -23,10 +18,6 @@ export const connectToMetaMask = async (setError) => {
   }
 };
 
-/**
- * Web3 Service function to get current active wallet
- * @returns
- */
 export function getActiveWallet() {
   if (!hasEthereum()) return false;
   const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -35,10 +26,6 @@ export function getActiveWallet() {
   return address;
 }
 
-/**
- * Web3 Service function to check if user has any ETH handler for eg. Metamask installed
- * @returns
- */
 export function hasEthereum() {
   return window.ethereum ? true : false;
 }
@@ -83,6 +70,39 @@ export async function getBeimaContract(signer) {
     if (!hasEthereum()) return false;
 
     return new ethers.Contract(BeimaContractAddress, BeimaAbi.abi, signer);
+  } catch (err) {
+    console.log("failed to load contract", err);
+  }
+}
+
+export async function getWeb3BeimaContract() {
+  try {
+    if (!hasEthereum()) return false;
+    const web3 = new Web3(Web3.givenProvider)
+
+    return new web3.eth.Contract(BeimaAbi.abi, BeimaContractAddress)
+
+  } catch (err) {
+    console.log("failed to load contract", err);
+  }
+}
+
+export async function getRinkebyUSDTContract(signer) {
+  try {
+    if (!hasEthereum()) return false;
+
+    return new ethers.Contract(RinkebyUSDTContractAddress, RinkebyUSDTAbi, signer);
+  } catch (err) {
+    console.log("failed to load contract", err);
+  }
+}
+
+export async function getWeb3RinkebyUSDTContract() {
+  try {
+    if (!hasEthereum()) return false;
+    const web3 = new Web3(Web3.givenProvider)
+
+    return new web3.eth.Contract(RinkebyUSDTAbi, RinkebyUSDTContractAddress)
   } catch (err) {
     console.log("failed to load contract", err);
   }

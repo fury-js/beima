@@ -5,6 +5,7 @@ import { PensionSvg, TotalBalSvg, TotalSvg } from "../../assets/svg";
 import { BalanceCard, Button } from "../../components";
 import BackButton from "../../components/BackButton";
 import { useDashboardContext } from "../../contexts/dashboardContext";
+import { depositAsset } from "../../services/pensionService";
 import { formatMoney } from "../../utils";
 import toast from "../../utils/toastConfig";
 import styles from "./single-pension-page.module.css";
@@ -17,6 +18,14 @@ const getInterest = (interest) => {
 };
 
 function SinglePensionPage(props) {
+
+  const handleDeposit = () => {
+    (async () => {
+      await depositAsset();
+    })();
+    // toast.success("Successful Deposit");
+  };
+
   const history = useHistory();
   const { pensions } = useDashboardContext();
   const { id } = useParams();
@@ -49,10 +58,8 @@ function SinglePensionPage(props) {
             <div className="flex flex-col justify-center col-span-11 sm:col-span-4 lg:col-span-3 sm:row-span-2">
               <Button
                 className="col-span-3"
-                text="Withdraw"
-                onClick={() =>
-                  toast.success("You have successfully withdrawn your funds")
-                }
+                text="Deposit"
+                onClick={() => handleDeposit()}
               />
             </div>
           </div>
