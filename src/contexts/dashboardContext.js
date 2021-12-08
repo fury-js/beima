@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getUserDetails, userIsRegistered } from "../services/userService";
-import { getCurrentNetwork, getBeimaContract } from "../services/web3Service";
+import { getCurrentNetwork } from "../services/web3Service";
 import toast from "../utils/toastConfig";
 
 const DashboardContext = createContext();
@@ -12,8 +12,6 @@ const coinAssets = [
   { name: "ETH", address: "" },
   { name: "TUSD", address: "" },
 ];
-
-// const history = [...initPensions];
 
 export function DashboardProvider({ children }) {
   const [pensions, setPensions] = useState([]);
@@ -36,18 +34,17 @@ export function DashboardProvider({ children }) {
   useEffect(() => {
     (async () => {
       const network = await getCurrentNetwork();
-      if (network && network !== "kovan") {
-        return toast.error("Please Switch to the Kovan Test Network");
+      if (network && network !== "rinkeby") {
+        return toast.error("Please Switch to the Rinkeby Test Network");
       }
-      const beima = await getBeimaContract();
+      // const beima = await getBeimaContract();
       const registerStatus = await userIsRegistered();
       const data = await getUserDetails();
       const { user, pension } = data;
-      console.log({ user, pension });
       setUser(user);
       if (pension) setPensions([{ ...pension }]);
       setIsRegistered(registerStatus);
-      console.log(beima);
+      // console.log(beima);
     })();
   }, [setIsRegistered]);
 

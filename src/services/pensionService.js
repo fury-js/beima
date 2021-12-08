@@ -1,4 +1,3 @@
-/** @format */
 import { parseEther } from "@ethersproject/units";
 import { ethers } from "ethers";
 import toast from "../utils/toastConfig";
@@ -7,8 +6,8 @@ import {
   hasEthereum,
   getBeimaContract,
   getCurrentNetwork,
-  getActiveWallet,
   getRinkebyUSDTContract,
+  getActiveWallet,
 } from "./web3Service";
 
 export async function createFlexiblePlan(
@@ -25,7 +24,7 @@ export async function createFlexiblePlan(
   try {
     if (!hasEthereum()) return false;
     const network = await getCurrentNetwork();
-    if (network && !network.includes("kovan")) return false;
+    if (network && !network.includes("rinkeby")) return false;
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
 

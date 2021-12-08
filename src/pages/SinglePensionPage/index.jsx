@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { barchartImage } from "../../assets/images";
 import { PensionSvg, TotalBalSvg, TotalSvg } from "../../assets/svg";
@@ -7,7 +7,6 @@ import BackButton from "../../components/BackButton";
 import { useDashboardContext } from "../../contexts/dashboardContext";
 import { depositAsset } from "../../services/pensionService";
 import { formatMoney } from "../../utils";
-import toast from "../../utils/toastConfig";
 import styles from "./single-pension-page.module.css";
 
 const getInterest = (interest) => {

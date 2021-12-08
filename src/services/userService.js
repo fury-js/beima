@@ -15,7 +15,7 @@ export async function userIsRegistered() {
   try {
     if (!hasEthereum()) return false;
     const network = await getCurrentNetwork();
-    if (network && network !== "kovan") return false;
+    if (network && network !== "rinkeby") return false;
 
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
@@ -62,7 +62,6 @@ export async function getUserDetails() {
     const signer = provider.getSigner();
 
     const beimaContract = await getBeimaContract(signer);
-    console.log(beimaContract);
     const address = getActiveWallet();
 
     const details = await beimaContract.pensionServiceApplicant(address);
@@ -92,10 +91,10 @@ export async function getUserDetails() {
       totalDeposit,
     };
 
-    console.log({ user, pension });
+    // console.log({ user, pension });
 
     return { user, pension };
   } catch (err) {
-    console.log("Something went wordSpacing: ", err);
+    console.log("Something went wrong: ", err);
   }
 }

@@ -26,7 +26,6 @@ const nullInterest = { amount: 0, currency: "XEND" };
 
 function DashboardHome() {
   const { isRegistered, pensions } = useDashboardContext();
-  console.log(pensions);
 
   return (
     <main className={`${styles["container"]} container  py-5`}>
