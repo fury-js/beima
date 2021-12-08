@@ -1,5 +1,6 @@
-import { parseEther } from "@ethersproject/units";
+import { parseEther, formatEther } from "@ethersproject/units";
 import { ethers } from "ethers";
+import { formatMoney } from "../utils";
 import toast from "../utils/toastConfig";
 import Emitter from "./emitter";
 import {
@@ -90,6 +91,46 @@ export async function depositAsset(onSuccess) {
       toast.success("Deposit was successful");
       Emitter.emit("CLOSE_LOADER");
       onSuccess(monthlyDeposit);
+    });
+  } catch (err) {
+    console.log("Something went wrong", err);
+    let msg = "Something went wrong, please try again later.";
+    if (err.code === 4001) msg = "This transaction was denied by you";
+    if (err.code === -32016)
+      msg = "You don't have enough funds to complete this transaction";
+    Emitter.emit("CLOSE_LOADER");
+    toast.error(msg);
+  }
+}
+
+export async function supplyAssets(onSuccess) {
+  Emitter.emit("OPEN_LOADER");
+  try {
+    if (!hasEthereum()) return false;
+    const network = await getCurrentNetwork();
+    if (network && !network.includes("rinkeby")) return false;
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const address = await getActiveWallet();
+
+    const beimaContract = await getBeimaContract(signer);
+    const details = await beimaContract.pensionServiceApplicant(address);
+    const totalUnsuppliedAmount = (
+      await beimaContract.amountSupplied(address)
+    ).toString();
+
+    const cAsset = details.client.underlyingAsset;
+
+    await beimaContract.supply(cAsset);
+
+    await beimaContract.on("Supply", () => {
+      const formattedTotal = formatEther(totalUnsuppliedAmount);
+      toast.success(
+        `You have successfully staked ${formatMoney(formattedTotal)}`
+      );
+      onSuccess();
+      Emitter.emit("CLOSE_LOADER");
+      onSuccess(formattedTotal);
     });
   } catch (err) {
     console.log("Something went wrong", err);

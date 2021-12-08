@@ -5,7 +5,7 @@ import { PensionSvg, TotalBalSvg, TotalSvg } from "../../assets/svg";
 import { BalanceCard, Button } from "../../components";
 import BackButton from "../../components/BackButton";
 import { useDashboardContext } from "../../contexts/dashboardContext";
-import { depositAsset } from "../../services/pensionService";
+import { depositAsset, supplyAssets } from "../../services/pensionService";
 import { formatMoney } from "../../utils";
 import styles from "./single-pension-page.module.css";
 
@@ -28,9 +28,21 @@ function SinglePensionPage(props) {
         const currentState = { ...details };
         currentState.totalDeposit =
           parseInt(currentState.totalDeposit) + parseInt(amount);
+        currentState.totalUnsuppliedAmount = currentState.totalDeposit;
         updatePensionPlan(id, currentState);
       };
       await depositAsset(onSuccess);
+    })();
+  };
+
+  const handleSupply = () => {
+    (async () => {
+      const onSuccess = () => {
+        const currentState = { ...details };
+        currentState.totalUnsuppliedAmount = 0;
+        updatePensionPlan(id, currentState);
+      };
+      await supplyAssets(onSuccess);
     })();
   };
 
@@ -93,6 +105,26 @@ function SinglePensionPage(props) {
               />
             </div>
           </div>
+          {parseInt(details.totalUnsuppliedAmount) > 0 && (
+            <div className={`${styles["card-body"]} px-10 py-8 mb-10`}>
+              <div className="mb-2">
+                <span className="pr-2">You currently have </span>
+                <span className={`${styles["detail"]} pr-2`}>
+                  {formatMoney(details.totalUnsuppliedAmount)}
+                </span>
+                <span> available to stake for interests.</span>
+                <br />
+              </div>
+              <div className="mb-2">
+                <Button
+                  className="col-span-3"
+                  text="Stake Funds"
+                  onClick={() => handleSupply()}
+                />
+              </div>
+            </div>
+          )}
+
           <div className={`${styles["card-body"]} px-10 pt-10 pb-10`}>
             <div className="mb-2">
               <span className="pr-3">Your Pension plan was created on</span>

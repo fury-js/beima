@@ -65,6 +65,9 @@ export async function getUserDetails() {
     const address = getActiveWallet();
 
     const details = await beimaContract.pensionServiceApplicant(address);
+    const totalUnsuppliedAmount = formatEther(
+      (await beimaContract.amountSupplied(address)).toString()
+    );
     const assetDetails = formatEther(
       (
         await beimaContract.assets(RinkebyUSDTContractAddress, address)
@@ -89,6 +92,7 @@ export async function getUserDetails() {
       ...pensionInfo,
       monthlyDeposit,
       totalDeposit,
+      totalUnsuppliedAmount,
     };
 
     // console.log({ user, pension });
