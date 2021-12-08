@@ -1,5 +1,7 @@
 /** @format */
+import { formatEther } from "@ethersproject/units";
 import { ethers } from "ethers";
+import { RinkebyUSDTContractAddress } from "../utils";
 import toast from "../utils/toastConfig";
 import Emitter from "./emitter";
 import {
@@ -60,9 +62,16 @@ export async function getUserDetails() {
     const signer = provider.getSigner();
 
     const beimaContract = await getBeimaContract(signer);
+    console.log(beimaContract);
     const address = getActiveWallet();
 
     const details = await beimaContract.pensionServiceApplicant(address);
+    const assetDetails = formatEther(
+      (
+        await beimaContract.assets(RinkebyUSDTContractAddress, address)
+      ).toString()
+    );
+
     const hasPlan = details.client.hasPlan;
     const user = await fetch(
       `https://ipfs.io/ipfs/${details.userDetails}`
@@ -75,7 +84,7 @@ export async function getUserDetails() {
     ).then((r) => r.json());
 
     const monthlyDeposit = details.client.amountToSpend.toString();
-    const totalDeposit = details.client.depositedAmount.toString();
+    const totalDeposit = assetDetails;
 
     const pension = {
       ...pensionInfo,

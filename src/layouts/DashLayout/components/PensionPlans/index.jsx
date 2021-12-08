@@ -18,7 +18,7 @@ function PensionPlans(props) {
   const [activePlan, setActivePlan] = useState(null);
   const activatePlan = (plan) => {
     if (pensions.length)
-      return toast.error("You have already setup a pension plan");
+      toast.error("You have already setup a pension plan");
     setActivePlan(plan);
   };
   const plans = {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { barchartImage } from "../../assets/images";
 import { PensionSvg, TotalBalSvg, TotalSvg } from "../../assets/svg";
@@ -18,18 +18,23 @@ const getInterest = (interest) => {
 };
 
 function SinglePensionPage(props) {
+  const history = useHistory();
+  const { pensions, updatePensionPlan } = useDashboardContext();
+  const { id } = useParams();
+  const details = pensions?.[id - 1];
 
   const handleDeposit = () => {
     (async () => {
-      await depositAsset();
+      const onSuccess = (amount) => {
+        const currentState = { ...details };
+        currentState.totalDeposit =
+          parseInt(currentState.totalDeposit) + parseInt(amount);
+        updatePensionPlan(id, currentState);
+      };
+      await depositAsset(onSuccess);
     })();
-    // toast.success("Successful Deposit");
   };
 
-  const history = useHistory();
-  const { pensions } = useDashboardContext();
-  const { id } = useParams();
-  const details = pensions?.[id - 1];
   if (!details) history.push("/dashboard/pensions");
   return (
     <main className={`${styles["container"]} container pb-20`}>

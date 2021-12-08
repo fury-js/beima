@@ -1,4 +1,5 @@
 /** @format */
+import { parseEther } from "@ethersproject/units";
 import { ethers } from "ethers";
 import toast from "../utils/toastConfig";
 import Emitter from "./emitter";
@@ -6,8 +7,8 @@ import {
   hasEthereum,
   getBeimaContract,
   getCurrentNetwork,
-  getKovanUSDTContract,
   getActiveWallet,
+  getRinkebyUSDTContract,
 } from "./web3Service";
 
 export async function createFlexiblePlan(
@@ -29,9 +30,17 @@ export async function createFlexiblePlan(
     const signer = provider.getSigner();
 
     const beimaContract = await getBeimaContract(signer);
-    // console.log(monthlyDeposit, typeof monthlyDeposit);
-    // monthlyDeposit = ethers.utils.parseEther(monthlyDeposit);
-    // Emitter.emit("CLOSE_LOADER");
+    console.log({ totalApprovedAmount });
+
+    const RinkebyUSDTContract = await getRinkebyUSDTContract(signer);
+    await RinkebyUSDTContract.approve(
+      beimaContract.address,
+      parseEther(totalApprovedAmount).toString()
+    );
+    await RinkebyUSDTContract.on("Approval", () => {
+      toast.success("Approval was successful");
+    });
+
     await beimaContract.setPlan(
       coin,
       planIpfs,
@@ -56,37 +65,32 @@ export async function createFlexiblePlan(
   }
 }
 
-export async function depositAsset(coinAddress, amount) {
+export async function depositAsset(onSuccess) {
   Emitter.emit("OPEN_LOADER");
   try {
     if (!hasEthereum()) return false;
     const network = await getCurrentNetwork();
-    if (network && !network.includes("kovan")) return false;
+    if (network && !network.includes("rinkeby")) return false;
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
-    const address = getActiveWallet();
+    const address = await getActiveWallet();
 
-    const KovanUSDTContract = await getKovanUSDTContract(signer);
-    console.log(KovanUSDTContract);
     const beimaContract = await getBeimaContract(signer);
-    const beimaContractAddress = beimaContract.address;
     const details = await beimaContract.pensionServiceApplicant(address);
-    console.log(beimaContractAddress);
-    let monthlyDeposit = details.client.amountToSpend.toString();
-    monthlyDeposit = ethers.utils.parseEther(monthlyDeposit);
-    const asset = details.client.underlyingAsset;
-    console.log(asset);
 
-    const a = await KovanUSDTContract.approve(
-      beimaContractAddress,
-      monthlyDeposit
+    let monthlyDeposit = details.client.amountToSpend.toString();
+    const cAsset = details.client.underlyingAsset;
+    const asset = await beimaContract.getAssetAddress(cAsset);
+
+    await beimaContract.depositToken(
+      asset,
+      parseEther(monthlyDeposit).toString()
     );
-    console.log({ a });
-    await beimaContract.deposit(asset, monthlyDeposit);
 
     await beimaContract.on("Deposit", () => {
       toast.success("Deposit was successful");
       Emitter.emit("CLOSE_LOADER");
+      onSuccess(monthlyDeposit);
     });
   } catch (err) {
     console.log("Something went wrong", err);

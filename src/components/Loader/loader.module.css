@@ -18,6 +18,7 @@
 
 .container .loader-body {
   margin: auto;
+  top: -72px;
   position: relative;
   background-color: #fff;
   width: 144px;
