@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { barchartImage } from "../../assets/images";
 import { PensionSvg, TotalBalSvg, TotalSvg } from "../../assets/svg";
 import { BalanceCard, Button, Prompt } from "../../components";
@@ -22,7 +22,7 @@ const getInterest = (interest) => {
 
 function SinglePensionPage(props) {
   const [activePrompt, setActivePrompt] = useState(false);
-  const history = useHistory();
+  // const history = useHistory();
   const { pensions, updatePensionPlan } = useDashboardContext();
   const { id } = useParams();
   const details = pensions?.[id - 1];
