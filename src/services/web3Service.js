@@ -63,7 +63,7 @@ export async function getRinkebyUSDTContract(signer) {
   try {
     if (!hasEthereum()) return false;
     const USDTAbi = await fetch(
-      "https://api.rinkeby.etherscan.io/api?module=contract&action=getabi&address=0xD9BA894E0097f8cC2BBc9D24D308b98e36dc6D02"
+      "https://api-rinkeby.etherscan.io/api?module=contract&action=getabi&address=0xE2F373f64f7b60a82a4aC1aF1543f9e9eBa38fE1"
     ).then((r) => r.json());
     return new ethers.Contract(
       RinkebyUSDTContractAddress,
