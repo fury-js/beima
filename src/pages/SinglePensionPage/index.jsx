@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { barchartImage } from "../../assets/images";
 import { PensionSvg, TotalBalSvg, TotalSvg } from "../../assets/svg";
-import { BalanceCard, Button } from "../../components";
+import { BalanceCard, Button, Prompt } from "../../components";
 import BackButton from "../../components/BackButton";
 import { useDashboardContext } from "../../contexts/dashboardContext";
-import { depositAsset, supplyAssets } from "../../services/pensionService";
+import {
+  depositAsset,
+  supplyAssets,
+  withdrawAssets,
+} from "../../services/pensionService";
 import { formatMoney } from "../../utils";
 import styles from "./single-pension-page.module.css";
 
@@ -17,6 +21,7 @@ const getInterest = (interest) => {
 };
 
 function SinglePensionPage(props) {
+  const [activePrompt, setActivePrompt] = useState(false);
   const history = useHistory();
   const { pensions, updatePensionPlan } = useDashboardContext();
   const { id } = useParams();
@@ -46,9 +51,28 @@ function SinglePensionPage(props) {
     })();
   };
 
-  if (!details) history.push("/dashboard/pensions");
+  const handleWithdraw = () => {
+    (async () => {
+      const deposit = details.totalDeposit;
+      const onSuccess = () => {
+        const currentState = { ...details };
+        currentState.totalUnsuppliedAmount = 0;
+        currentState.totalDeposit = 0;
+        updatePensionPlan(id, currentState);
+        setActivePrompt(false);
+      };
+      await withdrawAssets(deposit, onSuccess);
+    })();
+  };
+
+  // if (!details) history.push("/dashboard/pensions");
   return (
     <main className={`${styles["container"]} container pb-20`}>
+      <Prompt
+        isActive={activePrompt}
+        setIsActive={setActivePrompt}
+        onWithdraw={handleWithdraw}
+      />
       <BackButton to="/dashboard/pensions" />
       {pensions.length > 0 && (
         <div className={` py-4`}>
@@ -105,25 +129,33 @@ function SinglePensionPage(props) {
               />
             </div>
           </div>
-          {parseInt(details.totalUnsuppliedAmount) > 0 && (
-            <div className={`${styles["card-body"]} px-10 py-8 mb-10`}>
-              <div className="mb-2">
-                <span className="pr-2">You currently have </span>
-                <span className={`${styles["detail"]} pr-2`}>
-                  {formatMoney(details.totalUnsuppliedAmount)}
-                </span>
-                <span> available to stake for interests.</span>
-                <br />
-              </div>
-              <div className="mb-2">
-                <Button
-                  className="col-span-3"
-                  text="Stake Funds"
-                  onClick={() => handleSupply()}
-                />
-              </div>
+          <div
+            className={`${styles["card-body"]} text-center sm:text-left px-10 py-8 mb-10`}
+          >
+            <div className="mb-4">
+              <span className="pr-2">You currently have </span>
+              <span className={`${styles["detail"]} pr-2`}>
+                {formatMoney(details.totalUnsuppliedAmount)}
+              </span>
+              <span> available to stake for interests.</span>
+              <br />
             </div>
-          )}
+            <div
+              className={`${styles["special-btns"]} flex flex-wrap gap-y-4 gap-x-10`}
+            >
+              <Button
+                disabled={parseInt(details.totalUnsuppliedAmount) <= 0}
+                className="col-span-3"
+                text="Stake Funds"
+                onClick={() => handleSupply()}
+              />
+              <Button
+                className="col-span-3"
+                text="Withdraw"
+                onClick={() => setActivePrompt(true)}
+              />
+            </div>
+          </div>
 
           <div className={`${styles["card-body"]} px-10 pt-10 pb-10`}>
             <div className="mb-2">

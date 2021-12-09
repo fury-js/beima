@@ -142,3 +142,43 @@ export async function supplyAssets(onSuccess) {
     toast.error(msg);
   }
 }
+
+export async function withdrawAssets(deposit, onSuccess) {
+  Emitter.emit("OPEN_LOADER");
+  try {
+    if (!hasEthereum()) return false;
+    const network = await getCurrentNetwork();
+    if (network && !network.includes("rinkeby")) return false;
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const address = await getActiveWallet();
+
+    const beimaContract = await getBeimaContract(signer);
+    const details = await beimaContract.pensionServiceApplicant(address);
+
+    const cAsset = details.client.underlyingAsset;
+
+    const asset = await beimaContract.getAssetAddress(cAsset);
+    const depositInWei = parseEther(deposit).toString();
+    await beimaContract.redeemCErc20Tokens(depositInWei, cAsset);
+
+    await beimaContract.on("MyLog", async () => {
+      await beimaContract.withdrawToken(asset, depositInWei);
+      toast.success(`Funds successfully redeemed, proceeding to withdraw...`);
+    });
+
+    await beimaContract.on("Withdraw", () => {
+      toast.success(`You have successfully withdrawn ${formatMoney(deposit)}`);
+      Emitter.emit("CLOSE_LOADER");
+      onSuccess();
+    });
+  } catch (err) {
+    console.log("Something went wrong", err);
+    let msg = "Something went wrong, please try again later.";
+    if (err.code === 4001) msg = "This transaction was denied by you";
+    if (err.code === -32016)
+      msg = "You don't have enough funds to complete this transaction";
+    Emitter.emit("CLOSE_LOADER");
+    toast.error(msg);
+  }
+}
