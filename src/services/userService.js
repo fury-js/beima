@@ -23,7 +23,7 @@ export async function userIsRegistered() {
     const beimaContract = await getBeimaContract(signer);
     const address = getActiveWallet();
 
-    return await beimaContract.isRegistered(address);
+    return await beimaContract?.isRegistered(address);
   } catch (err) {
     console.log("Something went wrong", err);
   }
@@ -36,9 +36,9 @@ export async function registerUser(userIpfs, onRegister) {
     const signer = provider.getSigner();
 
     const beimaContract = await getBeimaContract(signer);
-    await beimaContract.register(userIpfs);
+    await beimaContract?.register(userIpfs);
 
-    await beimaContract.on("Register", () => {
+    await beimaContract?.on("Register", () => {
       onRegister();
       Emitter.emit("CLOSE_LOADER");
       toast.success("Registration was successful");
@@ -64,13 +64,13 @@ export async function getUserDetails() {
     const beimaContract = await getBeimaContract(signer);
     const address = getActiveWallet();
 
-    const details = await beimaContract.pensionServiceApplicant(address);
+    const details = await beimaContract?.pensionServiceApplicant(address);
     const totalUnsuppliedAmount = formatEther(
-      (await beimaContract.amountSupplied(address)).toString()
+      (await beimaContract?.amountSupplied(address)).toString()
     );
     const assetDetails = formatEther(
       (
-        await beimaContract.assets(RinkebyUSDTContractAddress, address)
+        await beimaContract?.assets(RinkebyUSDTContractAddress, address)
       ).toString()
     );
 
