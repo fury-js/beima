@@ -62,6 +62,7 @@ export async function getBeimaContract(signer) {
 export async function getRinkebyUSDTContract(signer) {
   try {
     if (!hasEthereum()) return false;
+      
     const USDTAbi = await fetch(
       "https://api-rinkeby.etherscan.io/api?module=contract&action=getabi&address=0xE2F373f64f7b60a82a4aC1aF1543f9e9eBa38fE1"
     ).then((r) => r.json());
@@ -70,6 +71,13 @@ export async function getRinkebyUSDTContract(signer) {
       USDTAbi.result,
       signer
     );
+    // this was the initial return value that was causing the bug.
+    //    return new ethers.Contract(
+    //    RinkebyUSDTContractAddress,
+    //    RinkebyUSDTAbi,
+    //    signer
+    //     );
+    
   } catch (err) {
     console.log("failed to load contract", err);
   }
