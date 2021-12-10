@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { BeimaAbi } from "../contracts/abis";
+import { BeimaAbi, RinkebyUSDTAbi } from "../contracts/abis";
 import { BeimaContractAddress, RinkebyUSDTContractAddress } from "../utils";
 
 export const connectToMetaMask = async (setError) => {
@@ -63,6 +63,7 @@ export async function getRinkebyUSDTContract(signer) {
   try {
     if (!hasEthereum()) return false;
       
+    //  this is the hack that"s serving me for now, contributions how can i make this better please lol.   
     const USDTAbi = await fetch(
       "https://api-rinkeby.etherscan.io/api?module=contract&action=getabi&address=0xE2F373f64f7b60a82a4aC1aF1543f9e9eBa38fE1"
     ).then((r) => r.json());
