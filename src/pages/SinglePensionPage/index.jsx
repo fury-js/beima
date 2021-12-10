@@ -1,12 +1,16 @@
-import React from "react";
-import { useHistory, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import { barchartImage } from "../../assets/images";
 import { PensionSvg, TotalBalSvg, TotalSvg } from "../../assets/svg";
-import { BalanceCard, Button } from "../../components";
+import { BalanceCard, Button, Prompt } from "../../components";
 import BackButton from "../../components/BackButton";
 import { useDashboardContext } from "../../contexts/dashboardContext";
+import {
+  depositAsset,
+  supplyAssets,
+  withdrawAssets,
+} from "../../services/pensionService";
 import { formatMoney } from "../../utils";
-import toast from "../../utils/toastConfig";
 import styles from "./single-pension-page.module.css";
 
 const getInterest = (interest) => {
@@ -17,13 +21,58 @@ const getInterest = (interest) => {
 };
 
 function SinglePensionPage(props) {
-  const history = useHistory();
-  const { pensions } = useDashboardContext();
+  const [activePrompt, setActivePrompt] = useState(false);
+  // const history = useHistory();
+  const { pensions, updatePensionPlan } = useDashboardContext();
   const { id } = useParams();
   const details = pensions?.[id - 1];
-  if (!details) history.push("/dashboard/pensions");
+
+  const handleDeposit = () => {
+    (async () => {
+      const onSuccess = (amount) => {
+        const currentState = { ...details };
+        currentState.totalDeposit =
+          parseInt(currentState.totalDeposit) + parseInt(amount);
+        currentState.totalUnsuppliedAmount = currentState.totalDeposit;
+        updatePensionPlan(id, currentState);
+      };
+      await depositAsset(onSuccess);
+    })();
+  };
+
+  const handleSupply = () => {
+    (async () => {
+      const onSuccess = () => {
+        const currentState = { ...details };
+        currentState.totalUnsuppliedAmount = 0;
+        updatePensionPlan(id, currentState);
+      };
+      await supplyAssets(onSuccess);
+    })();
+  };
+
+  const handleWithdraw = () => {
+    (async () => {
+      const deposit = details.totalDeposit;
+      const onSuccess = () => {
+        const currentState = { ...details };
+        currentState.totalUnsuppliedAmount = 0;
+        currentState.totalDeposit = 0;
+        updatePensionPlan(id, currentState);
+        setActivePrompt(false);
+      };
+      await withdrawAssets(deposit, onSuccess);
+    })();
+  };
+
+  // if (!details) history.push("/dashboard/pensions");
   return (
     <main className={`${styles["container"]} container pb-20`}>
+      <Prompt
+        isActive={activePrompt}
+        setIsActive={setActivePrompt}
+        onWithdraw={handleWithdraw}
+      />
       <BackButton to="/dashboard/pensions" />
       {pensions.length > 0 && (
         <div className={` py-4`}>
@@ -49,10 +98,8 @@ function SinglePensionPage(props) {
             <div className="flex flex-col justify-center col-span-11 sm:col-span-4 lg:col-span-3 sm:row-span-2">
               <Button
                 className="col-span-3"
-                text="Withdraw"
-                onClick={() =>
-                  toast.success("You have successfully withdrawn your funds")
-                }
+                text="Deposit"
+                onClick={() => handleDeposit()}
               />
             </div>
           </div>
@@ -82,6 +129,34 @@ function SinglePensionPage(props) {
               />
             </div>
           </div>
+          <div
+            className={`${styles["card-body"]} text-center sm:text-left px-10 py-8 mb-10`}
+          >
+            <div className="mb-4">
+              <span className="pr-2">You currently have </span>
+              <span className={`${styles["detail"]} pr-2`}>
+                {formatMoney(details.totalUnsuppliedAmount)}
+              </span>
+              <span> available to stake for interests.</span>
+              <br />
+            </div>
+            <div
+              className={`${styles["special-btns"]} flex flex-wrap gap-y-4 gap-x-10`}
+            >
+              <Button
+                disabled={parseInt(details.totalUnsuppliedAmount) <= 0}
+                className="col-span-3"
+                text="Stake Funds"
+                onClick={() => handleSupply()}
+              />
+              <Button
+                className="col-span-3"
+                text="Withdraw"
+                onClick={() => setActivePrompt(true)}
+              />
+            </div>
+          </div>
+
           <div className={`${styles["card-body"]} px-10 pt-10 pb-10`}>
             <div className="mb-2">
               <span className="pr-3">Your Pension plan was created on</span>

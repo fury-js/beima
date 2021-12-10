@@ -23,7 +23,7 @@ body {
   --app-yellow: #e9ba42;
   --app-grey: #717171;
   --app-green: #03a65a;
-  --app-gray: #6F6F6F;
+  --app-gray: #6f6f6f;
   --app-primary-text: poppins;
   --app-border-radius-sm: 10px;
   --app-border-radius-md: 15px;
@@ -57,6 +57,10 @@ li {
 
 .text-gray-450 {
   color: var(--app-grey);
+}
+
+.font-med-bold {
+  font-weight: 550;
 }
 
 .bg-gray-2 {

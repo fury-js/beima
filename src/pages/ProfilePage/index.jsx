@@ -15,6 +15,7 @@ function ProfilePage(props) {
     if (!isRegistered) {
       toast.error("You have not registered");
       setTimeout(() => {
+        Emitter.emit("CLOSE_LOADER");
         history.push("/dashboard");
       }, 3000);
     }

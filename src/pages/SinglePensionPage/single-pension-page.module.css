@@ -24,3 +24,15 @@
 .img-div img {
   max-height: 200px;
 }
+
+.special-btns :nth-child(1):disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.special-btns :nth-child(2) {
+  background-color: var(--app-red) !important;
+}
+
+.special-btns :nth-child(2) {
+}

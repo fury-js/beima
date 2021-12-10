@@ -45,8 +45,8 @@ function FlexiblePlanForm({ isOpen, onClose }) {
     ).toLocaleDateString();
     const lockTimeInseconds = noOfMonths * 30 * 24 * 3600;
 
-    const totalAmount = values.lockTime * values.deposit;
-    const monthlyDeposit = values.deposit;
+    const totalAmount = (values.lockTime * values.deposit).toString();
+    const monthlyDeposit = values.deposit.toString();
     const plan = {
       name: "Flexible",
       monthlyDeposit,
@@ -56,7 +56,7 @@ function FlexiblePlanForm({ isOpen, onClose }) {
       interest: { currency: "XEND", amount: "0" },
       dateCreated: today,
     };
-    const coin = coins.find((coin) => coin.name === "USDT").address;
+    const coin = coins.find((coin) => coin.name === "cUSDT").address;
     (async () => {
       const planIpfsHash = await ipfsMini.addJSON({ ...plan });
 

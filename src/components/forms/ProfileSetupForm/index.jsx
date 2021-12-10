@@ -230,7 +230,6 @@ function ProfileSetupForm() {
                     </div>
                   </div>
                   <Button
-                    onClick={() => console.log(formik.errors)}
                     type="submit"
                     className="ml-auto w-full lg:w-auto"
                     text="NEXT"

@@ -1,14 +1,7 @@
-/** @format */
-
 import { ethers } from "ethers";
 import { BeimaAbi } from "../contracts/abis";
-import { BeimaContractAddress } from "../utils";
+import { BeimaContractAddress, RinkebyUSDTContractAddress } from "../utils";
 
-/**
- * Web3 Service function to create connection to Metamask
- * @param {*} setError
- * @returns
- */
 export const connectToMetaMask = async (setError) => {
   try {
     if (!hasEthereum()) return false;
@@ -23,10 +16,6 @@ export const connectToMetaMask = async (setError) => {
   }
 };
 
-/**
- * Web3 Service function to get current active wallet
- * @returns
- */
 export function getActiveWallet() {
   if (!hasEthereum()) return false;
   const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -35,10 +24,6 @@ export function getActiveWallet() {
   return address;
 }
 
-/**
- * Web3 Service function to check if user has any ETH handler for eg. Metamask installed
- * @returns
- */
 export function hasEthereum() {
   return window.ethereum ? true : false;
 }
@@ -51,11 +36,6 @@ export async function getCurrentNetwork() {
   return network;
 }
 
-/**
- * Web3 Service function to listen to and detect account changes
- * @param {*} handler
- * @returns
- */
 export function listenToAccountChanges(handler) {
   if (!hasEthereum()) return false;
 
@@ -64,25 +44,32 @@ export function listenToAccountChanges(handler) {
   });
 }
 
-/**
- * Web3 Service function to unmount ETH listeners from browser
- * @returns {Promise<void>}
- */
 export async function unmountEthListeners() {
   window.ethereum.removeListener("accountsChanged", () => {});
   window.ethereum.removeListener("message", () => {});
 }
 
-/**
- * Web3 Service function to load contract
- * @param {*} signer
- * @returns
- */
 export async function getBeimaContract(signer) {
   try {
     if (!hasEthereum()) return false;
 
     return new ethers.Contract(BeimaContractAddress, BeimaAbi.abi, signer);
+  } catch (err) {
+    console.log("failed to load contract", err);
+  }
+}
+
+export async function getRinkebyUSDTContract(signer) {
+  try {
+    if (!hasEthereum()) return false;
+    const USDTAbi = await fetch(
+      "https://api-rinkeby.etherscan.io/api?module=contract&action=getabi&address=0xE2F373f64f7b60a82a4aC1aF1543f9e9eBa38fE1"
+    ).then((r) => r.json());
+    return new ethers.Contract(
+      RinkebyUSDTContractAddress,
+      USDTAbi.result,
+      signer
+    );
   } catch (err) {
     console.log("failed to load contract", err);
   }
